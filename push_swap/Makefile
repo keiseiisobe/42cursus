@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = push_swap
-SRCS = main.c
+SRCS = push_swap.c
 OBJS = $(SRCS:.c=.o)
 LIBFTDIR = ./libft
 LIBFT = $(LIBFTDIR)/libft.a
