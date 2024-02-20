@@ -1,69 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instructions.c                                     :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/13 11:16:08 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/13 11:20:15 by kisobe           ###   ########.fr       */
+/*   Created: 2024/02/19 07:39:59 by kisobe            #+#    #+#             */
+/*   Updated: 2024/02/20 09:30:07 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-swap_a()
+void	check_error(bool error)
 {
-
+	if (error == true)
+	{
+		exit(1);
+	}
 }
-
-swap_b()
-{
-
-}
-
-swap_a_and_b()
-{
-
-}
-
-push_a()
-{
-
-}
-
-push_b()
-{
-
-}
-
-rotate_a()
-{
-
-}
-
-rotate_b()
-{
-
-}
-
-rotate_a_and_b()
-{
-
-}
-
-reverse_rotate_a()
-{
-
-}
-
-reverse_rotate_b()
-{
-
-}
-
-reverse_rotate_a_and_b()
-{
-
-}
-

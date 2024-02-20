@@ -6,79 +6,110 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 08:59:30 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/13 11:15:40 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/02/20 13:08:23 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*convert_args_to_int_arr(t_arg *arg)
-{
-//	int	*args_arr;
-//	if (argc == 2)
-//		arg_tmp = ft_split(argv[1]);
-//		while()
-//			args_arr[] = ft_atoi(arg_tmp[]);
-//	else
-//		while (argv[])
-//			args_arr[] = ft_atoi(argv[])
-	arg->arg_num = ;
+__attribute__((destructor))
+static void destructor() {
+    system("leaks -q push_swap");
 }
 
-void	*init_list(t_arg *arg)
+void	pb_3_nums(t_lists *lists)
 {
-  int *arr;
-  void  *list;
-  int i;
-  t_node  *tmp;
-//-------convert args to int_ptr--------
-	arr = convert_args_to_int_arr(arg);
-//------put args to each nodes in list--------
-	list = NULL;
-  i = 0;
-	while (i < arg->arg_num)
+	int	i;
+
+	i = 0;
+	while (i < 3)
 	{
-		t_node *node;
-		node = malloc(sizeof(t_node));
-		node->value = arr[i];
-		node->next = NULL;
-		if (list == NULL)
-			node->prev = NULL;
-		else
-		{
-			tmp = list;
-			while (tmp->next)
-				tmp = tmp->next;
-			tmp->next = node;
-      node->prev = tmp;
-		}
-    i++:
+		lists = push_b(lists);
+		i++;
 	}
-  return (list);
 }
 
-void  sort_nums()
+t_node	*handle_3_nums(t_node *list_a)
 {
-  push_three_nums_to_stack_b();
-  handle_three_nums();
-  sort_stack_b_in_decending_order();
-  sort_stack_a();
+	return (list_a);
+}
+
+t_node	*handle_less_than_4_nums(t_node *list_a, int num_of_args)
+{
+	if (num_of_args == 2)
+		list_a = swap_a(list_a);
+	else if (num_of_args == 3)
+		list_a = handle_3_nums(list_a);
+	return (list_a);
+}
+
+t_node	*sort_nums(t_lists *lists, int num_of_args)
+{
+//-------initialize stack B list------------
+//	check if num_of_args is < 4, then don"t push, sort!)
+	if (num_of_args < 4)
+	{
+		lists->list_a = handle_less_than_4_nums(lists->list_a, num_of_args);
+		return (lists->list_a);
+	}
+	lists->list_b = NULL;
+//	pb_3_nums(lists);
+	lists->list_a = swap_a(lists->list_a);
+//	handle_3_nums();
+
+//---------printf for testing-------------
+	t_node	*tmp_a;
+	tmp_a = lists->list_a;
+
+	printf("\n\n\n");
+	if (tmp_a)
+	{
+		while (tmp_a->next != lists->list_a)
+		{
+			printf("list_a : value is %d, address is %p, prev is %p, next is %p\n", tmp_a->value, tmp_a, tmp_a->prev, tmp_a->next);
+			tmp_a = tmp_a->next;
+		}
+		printf("list_a : value is %d, address is %p, prev is %p, next is %p\n", tmp_a->value, tmp_a, tmp_a->prev, tmp_a->next);
+	}
+	t_node	*tmp_b;
+	tmp_b = lists->list_b;
+
+	if (tmp_b)
+	{
+		while (tmp_b && (tmp_b->next != lists->list_b))
+		{
+			printf("list_b : value is %d, address is %p, prev is %p, next is %p\n", tmp_b->value, tmp_b, tmp_b->prev, tmp_b->next);
+			tmp_b = tmp_b->next;
+		}
+		printf("list_b : value is %d, address is %p, prev is %p, next is %p\n\n\n", tmp_b->value, tmp_b, tmp_b->prev, tmp_b->next);
+	}
+//-----------------------------------------
+
+//	sort_stack_b_in_descending_order();
+//	sort_stack_a();
+
+	free_list(lists->list_b);
+	return (lists->list_a);
 }
 
 int main(int argc, char *argv[])
 {
-  t_arg *arg;
-  void  *list;
+	t_arg	*arg;
+	t_lists	*lists;
 
-	arg = arg_check(argc, argv[]);
-//------put arg to stack A-------
-	list = init_list(arg)
+	arg = arg_check(argc, argv);
+//------put arg to list-------
+	lists = malloc(sizeof(t_lists));
+	lists->list_a = init_list(arg);
 //--------------sort------------------
-  sort_nums(list);
-  free(arg);
+	sort_nums(lists, arg->num_of_args);
+
+	free_list(lists->list_a);
+	free(lists);
+	free(arg);
 }
 
-
+/*
 // when using turkey algorithm...
 
 // coordinate compression is needed.
@@ -145,7 +176,7 @@ void  sort_stack_a()
 // After that all process,
 // check if the top of number in stack A is smallest in stack A.
 
-
+*/
 
 
 
