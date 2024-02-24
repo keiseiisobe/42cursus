@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:02:00 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/21 09:02:13 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/02/24 14:00:24 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int	*convert_args_to_int_arr(t_arg *arg)
 
 t_node	*create_first_node(t_node *node, t_node *list)
 {
-//	printf("head is %p\n", node);
 	node->prev = node;
 	node->next = node;
 	list = node;
@@ -78,7 +77,6 @@ t_node	*init_list(t_arg *arg)
 //-------convert args to int_ptr--------
 	nums = convert_args_to_int_arr(arg);
 //------put args to each nodes in list--------
-//	list = malloc(sizeof(t_list));
 	list_a = NULL;
 	i = 0;
 	while (i < arg->num_of_args)
@@ -93,7 +91,6 @@ t_node	*init_list(t_arg *arg)
 			tmp = list_a;
 			while (tmp->next != list_a)
 				tmp = tmp->next;
-//			tmp->prev = node;
 			tmp->next = node;
 			node->prev = tmp;
 			node->next = list_a;
@@ -104,4 +101,3 @@ t_node	*init_list(t_arg *arg)
 	free(nums);
 	return (list_a);
 }
-

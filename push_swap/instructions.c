@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:16:08 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/23 12:03:52 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/02/24 14:00:35 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@ t_node	*swap(t_node *list, int flag)
 	t_node	*second_tmp = first_tmp->next;
 	t_node	*third_tmp = second_tmp->next;
 	t_node	*before_tmp = first_tmp->prev;
-//	printf("first_tmp is %p\n", first_tmp);
-//	printf("second_tmp is %p\n", second_tmp);
-//	printf("third_tmp is %p\n", third_tmp);
-//	printf("before_tmp is %p\n", before_tmp);
 
 	if (flag == A)
 		write(1, "sa\n", 3);

@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 07:39:59 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/20 09:30:07 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/02/24 14:00:10 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	check_error(bool error)
 {
 	if (error == true)
 	{
+		write(2, "Error\n", 6);
 		exit(1);
 	}
 }

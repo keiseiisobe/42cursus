@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 14:22:05 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/23 14:32:09 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/02/24 14:00:03 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	get_min(int ra_rb_count, int ra_rrb_count, int rra_rb_count, int rra_rrb_cou
 	return (min);
 }
 
-int	get_cheapest_instructions(t_node *list_a)
+int	get_cheapest_instructions_for_asc(t_node *list_a)
 {
 	int	ra_count;
 	int	rra_count;
@@ -74,4 +74,30 @@ int	get_cheapest_instructions(t_node *list_a)
 		return (RA);
 	else
 		return (RRA);
+}
+
+int	get_cheapest_instructions_for_desc(t_node *list_b)
+{
+	int	rb_count;
+	int	rrb_count;
+	t_node	*tmp;
+
+	rb_count = 0;
+	rrb_count = 0;
+	tmp = list_b;
+	while (tmp->value < tmp->prev->value)
+	{
+		rb_count++;
+		tmp = tmp->next;
+	}
+	tmp = list_b;
+	while (tmp->value < tmp->prev->value)
+	{
+		rrb_count++;
+		tmp = tmp->prev;
+	}
+	if (rb_count <= rrb_count)
+		return (RB);
+	else
+		return (RRB);
 }

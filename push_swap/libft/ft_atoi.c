@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:30:54 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/01 14:48:36 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/02/24 11:25:21 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ft_if_minus(int *i_p, const char *str)
 	return (if_minus);
 }
 
-static int	change_to_int(int i, const char *str, int result)
+static long	change_to_int(int i, const char *str, long result)
 {
 	int	int_num;
 
@@ -43,11 +43,11 @@ static int	change_to_int(int i, const char *str, int result)
 	return (result);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int	i;
 	int	if_minus;
-	int	result;
+	long	result;
 
 	i = 0;
 	while (str[i])
