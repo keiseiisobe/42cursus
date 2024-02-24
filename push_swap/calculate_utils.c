@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 14:22:05 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/24 14:00:03 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/02/24 19:51:52 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int	check_dupe(int instruction_a, int instruction_b)
 	}
 }
 
-int	get_min(int ra_rb_count, int ra_rrb_count, int rra_rb_count, int rra_rrb_count)
+int	get_min(int ra_rb_count, int ra_rrb_count, int rra_rb_count,
+		int rra_rrb_count)
 {
 	int	min;
 
@@ -52,8 +53,8 @@ int	get_min(int ra_rb_count, int ra_rrb_count, int rra_rb_count, int rra_rrb_cou
 
 int	get_cheapest_instructions_for_asc(t_node *list_a)
 {
-	int	ra_count;
-	int	rra_count;
+	int		ra_count;
+	int		rra_count;
 	t_node	*tmp;
 
 	ra_count = 0;
@@ -78,8 +79,8 @@ int	get_cheapest_instructions_for_asc(t_node *list_a)
 
 int	get_cheapest_instructions_for_desc(t_node *list_b)
 {
-	int	rb_count;
-	int	rrb_count;
+	int		rb_count;
+	int		rrb_count;
 	t_node	*tmp;
 
 	rb_count = 0;

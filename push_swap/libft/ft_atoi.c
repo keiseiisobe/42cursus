@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:30:54 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/24 11:25:21 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/02/24 18:14:06 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static long	change_to_int(int i, const char *str, long result)
 
 long	ft_atoi(const char *str)
 {
-	int	i;
-	int	if_minus;
+	int		i;
+	int		if_minus;
 	long	result;
 
 	i = 0;

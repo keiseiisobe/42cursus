@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:16:08 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/24 14:00:35 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/02/24 21:03:27 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 
 t_node	*swap(t_node *list, int flag)
 {
-	t_node	*first_tmp = list;
-	t_node	*second_tmp = first_tmp->next;
-	t_node	*third_tmp = second_tmp->next;
-	t_node	*before_tmp = first_tmp->prev;
+	t_node	*first_tmp;
+	t_node	*second_tmp;
+	t_node	*third_tmp;
+	t_node	*before_tmp;
 
+	first_tmp = list;
+	second_tmp = first_tmp->next;
+	third_tmp = second_tmp->next;
+	before_tmp = first_tmp->prev;
 	if (flag == A)
 		write(1, "sa\n", 3);
 	else if (flag == B)
@@ -51,7 +55,6 @@ t_lists	*push_a(t_lists *lists)
 		lists->list_b->prev = tmp;
 		tmp->next = lists->list_b;
 	}
-
 	list_b_tmp->next = lists->list_a;
 	lists->list_a->prev = list_b_tmp;
 	tmp = lists->list_a;
@@ -60,7 +63,6 @@ t_lists	*push_a(t_lists *lists)
 	list_b_tmp->prev = tmp;
 	tmp->next = list_b_tmp;
 	lists->list_a = list_b_tmp;
-
 	write(1, "pa\n", 3);
 	return (lists);
 }
@@ -82,10 +84,9 @@ t_lists	*push_b(t_lists *lists)
 		lists->list_a->prev = tmp;
 		tmp->next = lists->list_a;
 	}
-
 	if (lists->list_b == NULL)
 	{
-		lists->list_b = create_first_node(list_a_tmp, lists->list_b);
+		lists->list_b = create_first_node(list_a_tmp);
 		lists->list_b->value = list_a_tmp->value;
 	}
 	else

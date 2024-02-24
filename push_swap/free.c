@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 09:54:35 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/24 14:00:18 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/02/24 19:52:07 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	free_list(t_node *list)
 {
 	t_node	*tmp;
 	t_node	*tmp_next;
-//-------free list_a-----------
+
 	tmp = list;
 	if (tmp)
 	{

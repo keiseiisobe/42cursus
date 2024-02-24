@@ -6,13 +6,13 @@
 #    By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/28 08:33:17 by kisobe            #+#    #+#              #
-#    Updated: 2024/02/24 09:31:13 by kisobe           ###   ########.fr        #
+#    Updated: 2024/02/24 21:15:03 by kisobe           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-SRCS = push_swap.c init.c instructions.c sort_small.c sort_a.c sort_b.c calculate.c\
-	   calculate_utils.c arg.c error.c free.c
+SRCS = main.c push_swap.c init.c instructions.c sort_small.c sort_a.c sort_b.c calculate.c\
+	   calculate_utils.c move.c arg.c arg_utils.c error.c free.c
 OBJS = $(SRCS:.c=.o)
 LIBFTDIR = ./libft
 LIBFT = $(LIBFTDIR)/libft.a
