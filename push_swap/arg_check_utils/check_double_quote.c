@@ -1,22 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   check_double_quote.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 07:39:59 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/25 11:05:29 by kisobe           ###   ########.fr       */
+/*   Created: 2024/02/25 14:36:05 by kisobe            #+#    #+#             */
+/*   Updated: 2024/02/25 14:46:04 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	check_error(bool error)
+bool	check_double_quote(char **argv)
 {
-	if (error == true)
+	int		i;
+	int		j;
+	char	**strs;
+	int		flag;
+
+	flag = 0;
+	i = 1;
+	while (argv[i])
 	{
-		write(2, "Error\n", 6);
-		exit(1);
+		strs = ft_split(argv[i], ' ');
+		if (strs[1] != '\0')
+			flag = 1;
+		j = 0;
+		while (strs[j])
+			free(strs[j++]);
+		free(strs);
+		i++;
 	}
+	if (flag == 1)
+		return (false);
+	return (true);
 }
