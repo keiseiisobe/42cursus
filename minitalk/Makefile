@@ -2,8 +2,8 @@ NAME_S = server
 NAME_C = client
 NAME_S_B = server_bonus
 NAME_C_B = client_bonus
-SRCS_S = server.c set.c handle_bit.c ready.c error.c free.c
-SRCS_C = client.c set.c handle_bit.c ready.c error.c free.c
+SRCS_S = server.c error.c
+SRCS_C = client.c error.c
 SRCS_S_B = bonus/server_bonus.c bonus/set_bonus.c bonus/handle_bit_bonus.c\
 			bonus/ready_bonus.c bonus/error_bonus.c bonus/free_bonus.c
 SRCS_C_B = bonus/client_bonus.c bonus/set_bonus.c bonus/handle_bit_bonus.c\

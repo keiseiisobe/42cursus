@@ -9,4 +9,11 @@
 
 volatile sig_atomic_t	sig_flag;
 
+typedef struct s_info {
+	int	bits;
+	int	bits_count;
+}	t_info;
+
+void	error_check(bool is_error);
+
 #endif

@@ -1,9 +1,11 @@
 #include "minitalk_bonus.h"
 
+/*
 __attribute__((destructor))
 static void destructor() {
     system("leaks -q client_bonus");
 }
+*/
 
 void	send_bits(int pid, char *str)
 {
@@ -22,11 +24,17 @@ void	send_bits(int pid, char *str)
 				error_check(kill(pid, SIGUSR1) < 0);
 			else
 				error_check(kill(pid, SIGUSR2) < 0);
-			usleep(1000);
+			sleep(1);
 			bit_shift--;
 		}
 		i++;
 	}
+}
+
+void	signal_handler_client(int flag)
+{
+	(void)flag;
+	write(1, "received\n", 9);
 }
 
 int	main(int argc, char *argv[])
@@ -42,7 +50,7 @@ int	main(int argc, char *argv[])
 //---test: acknowledge sending back from server (bonus)---
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = SA_RESTART;
-	sa.sa_handler = SIG_IGN;
+	sa.sa_handler = signal_handler_client;
 	sigaction(SIGUSR1, &sa, NULL);
 	send_bits(pid, argv[2]);
 	return(0);

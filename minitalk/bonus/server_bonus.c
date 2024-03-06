@@ -26,6 +26,7 @@ int	main()
 		bit_info->bits_count++;
 		update_bits(bit_info);
 		ready_for_next_bits(bit_info);
+//		usleep(5000);
 	}
 	free_all(sa1, sa2, bit_info);
 }
