@@ -6,16 +6,12 @@
 #    By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/28 08:33:17 by kisobe            #+#    #+#              #
-#    Updated: 2024/03/08 08:13:03 by kisobe           ###   ########.fr        #
+#    Updated: 2024/02/12 09:42:06 by kisobe           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
-SRCS = main.c arg.c arg_check_utils/check_double_quote.c arg_check_utils/is_dupe.c\
-	   arg_check_utils/is_empty.c arg_check_utils/is_int.c arg_check_utils/is_int_max.c\
-	   calculate.c calculate_utils.c count.c count_utils/count_ra.c count_utils/count_rra.c\
-	   count_utils/count_rb.c count_utils/count_rrb.c error.c free.c init.c instructions.c\
-	   instructions_utils.c move.c push_swap.c sort.c sort_few.c sort_many.c vector.c
+NAME = fdf
+SRCS = main.c read.c draw.c deform.c color.c event.c error.c
 OBJS = $(SRCS:.c=.o)
 LIBFTDIR = ./libft
 LIBFT = $(LIBFTDIR)/libft.a
@@ -25,13 +21,13 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 %.o: %.c
-		$(CC) $(INCLUDE) $(CFLAGS) -c $< -o $@
+		$(CC) $(INCLUDE) $(CFLAGS) -Imlx -c $< -o $@
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
 		$(MAKE) -C $(LIBFTDIR)
-		$(CC) $(CFlAGS) $(LIBFT) $^ -o $@
+		$(CC) $(CFlAGS) $(LIBFT) -Imlx -lmlx -framework OpenGL -framework AppKit $^ -o $@
 
 clean :
 		rm -f $(OBJS)

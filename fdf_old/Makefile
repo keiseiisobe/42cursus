@@ -6,40 +6,29 @@
 #    By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/28 08:33:17 by kisobe            #+#    #+#              #
-#    Updated: 2024/03/08 08:13:03 by kisobe           ###   ########.fr        #
+#    Updated: 2024/02/01 09:47:06 by kisobe           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
-SRCS = main.c arg.c arg_check_utils/check_double_quote.c arg_check_utils/is_dupe.c\
-	   arg_check_utils/is_empty.c arg_check_utils/is_int.c arg_check_utils/is_int_max.c\
-	   calculate.c calculate_utils.c count.c count_utils/count_ra.c count_utils/count_rra.c\
-	   count_utils/count_rb.c count_utils/count_rrb.c error.c free.c init.c instructions.c\
-	   instructions_utils.c move.c push_swap.c sort.c sort_few.c sort_many.c vector.c
+NAME = fdf
+SRCS = main.c Libft/ft_atoi.c Libft/ft_split.c Libft/ft_strlen.c Libft/ft_substr.c GetNextLine/get_next_line.c GetNextLine/get_next_line_utils.c
 OBJS = $(SRCS:.c=.o)
-LIBFTDIR = ./libft
-LIBFT = $(LIBFTDIR)/libft.a
-LIBFTOBJS = $(LIBFTDIR)/*.o
-INCLUDE = -I./include -I$(LIBFTDIR)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CCFLAGS = -Wall -Wextra -Werror
 
-%.o: %.c
-		$(CC) $(INCLUDE) $(CFLAGS) -c $< -o $@
+$(NAME) : $(OBJS)
+		$(CC) $(OBJS) -Imlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
-		$(MAKE) -C $(LIBFTDIR)
-		$(CC) $(CFlAGS) $(LIBFT) $^ -o $@
+%.o: %.c
+	$(CC) $(CCFLAGS) -Imlx -c $< -o $@
 
 clean :
 		rm -f $(OBJS)
-		rm -f $(LIBFTOBJS)
 
 fclean : clean
 		rm -f $(NAME)
-		rm -f $(LIBFT)
 
 re : fclean all
 

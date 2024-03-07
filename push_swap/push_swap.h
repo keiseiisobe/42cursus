@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 14:57:27 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/25 16:13:48 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/08 08:08:04 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct s_init {
 t_arg		*handle_arg(int argc, char *argv[]);
 void		check_error(bool error);
 void		arg_init(t_arg *arg, int argc, char *argv[]);
+bool		is_empty(char **argv);
 bool		is_int_for_single_arg(char **argv);
 bool		is_int_for_multi_args(char **argv);
 bool		is_int_max_for_single_arg(char **argv);

@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 21:14:03 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/25 15:01:18 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/08 08:26:39 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,12 @@ int	main(int argc, char *argv[])
 	free(lists);
 	free(arg);
 }
-
 /*
 __attribute__((destructor))
 static void	destructor(void) {
 	system("leaks -q push_swap");
 }
 */
-
 /*
 //--------printf for testing list_a--------------
 	t_node	*tmp_a;
