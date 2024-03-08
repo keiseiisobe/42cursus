@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set_bonus.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/08 10:30:14 by kisobe            #+#    #+#             */
+/*   Updated: 2024/03/08 13:04:14 by kisobe           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk_bonus.h"
 
 void	signal_handler(int flag, siginfo_t *info, void *ptr)
@@ -5,9 +17,9 @@ void	signal_handler(int flag, siginfo_t *info, void *ptr)
 	(void)info;
 	(void)ptr;
 	if (flag == SIGUSR1)
-		sig_flag = 0;
+		g_flag_server = 0;
 	else
-		sig_flag = 1;
+		g_flag_server = 1;
 	kill(info->si_pid, SIGUSR1);
 }
 

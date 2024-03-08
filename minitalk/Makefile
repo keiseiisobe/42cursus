@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/03/08 10:28:27 by kisobe            #+#    #+#              #
+#    Updated: 2024/03/08 11:07:41 by kisobe           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME_S = server
 NAME_C = client
 NAME_S_B = server_bonus
@@ -13,30 +25,42 @@ OBJS_C = $(SRCS_C:.c=.o)
 OBJS_S_B = $(SRCS_S_B:.c=.o)
 OBJS_C_B = $(SRCS_C_B:.c=.o)
 
+LIBFTDIR = ./libft
+LIBFT = $(LIBFTDIR)/libft.a
+LIBFTOBJS = $(LIBFTDIR)/*.o
+INCLUDE = -I./include -I$(LIBFTDIR)
+
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME_S) $(NAME_C)
 
-$(NAME_S) : $(SRCS_S)
-	$(CC) $(CFLAGS) -o $(NAME_S) $(SRCS_S)
+%.o : %.c
+	$(CC) $(INCLUDE) $(CFlAGS) -c $< -o $@
 
-$(NAME_C) : $(SRCS_C)
-	$(CC) $(CFLAGS) -o $(NAME_C) $(SRCS_C)
+$(NAME_S) : $(OBJS_S)
+	$(MAKE) -C $(LIBFTDIR)
+	$(CC) $(CFLAGS) $(OBJS_S) $(LIBFT) -o $(NAME_S)
+
+$(NAME_C) : $(OBJS_C)
+	$(MAKE) -C $(LIBFTDIR)
+	$(CC) $(CFLAGS) $(OBJS_C) $(LIBFT) -o $(NAME_C)
 
 bonus: $(NAME_S_B) $(NAME_C_B)
 
-$(NAME_S_B) : $(SRCS_S_B)
-	$(CC) $(CFLAGS) -o $(NAME_S_B) $(SRCS_S_B)
+$(NAME_S_B) : $(OBJS_S_B)
+	$(MAKE) -C $(LIBFTDIR)
+	$(CC) $(CFLAGS) $(OBJS_S_B) $(LIBFT) -o $(NAME_S_B)
 
-$(NAME_C_B) : $(SRCS_C_B)
-	$(CC) $(CFLAGS) -o $(NAME_C_B) $(SRCS_C_B)
+$(NAME_C_B) : $(OBJS_C_B)
+	$(MAKE) -C $(LIBFTDIR)
+	$(CC) $(CFLAGS) $(OBJS_C_B) $(LIBFT) -o $(NAME_C_B)
 
 clean:
-	rm -f $(OBJS_S) $(OBJS_C) $(OBJS_S_B) $(OBJS_C_B)
+	rm -f $(OBJS_S) $(OBJS_C) $(OBJS_S_B) $(OBJS_C_B) $(LIBFTOBJS)
 
 fclean: clean
-	rm -f $(NAME_S) $(NAME_C) $(NAME_S_B) $(NAME_C_B)
+	rm -f $(NAME_S) $(NAME_C) $(NAME_S_B) $(NAME_C_B) $(LIBFT)
 
 re: fclean all
 

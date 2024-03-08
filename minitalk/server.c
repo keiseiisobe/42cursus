@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/08 10:29:02 by kisobe            #+#    #+#             */
+/*   Updated: 2024/03/08 11:18:04 by kisobe           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk.h"
 
 void	signal_handler(int flag)
 {
 	if (flag == SIGUSR1)
-		sig_flag = 0;
+		g_flag = 0;
 	else
-		sig_flag = 1;
+		g_flag = 1;
 }
 
 void	set(struct sigaction *sa1, struct sigaction *sa2)
@@ -24,7 +36,7 @@ void	set(struct sigaction *sa1, struct sigaction *sa2)
 
 void	update_bits(t_info *bits_info)
 {
-	if (sig_flag == 0)
+	if (g_flag == 0)
 	{
 		if (bits_info->bits_count == 0)
 			bits_info->bits = 0;
@@ -40,13 +52,13 @@ void	update_bits(t_info *bits_info)
 	}
 }
 
-int	main()
+int	main(void)
 {
 	struct sigaction	*sa1;
 	struct sigaction	*sa2;
 	t_info				*bits_info;
 
-	printf("PID: %d\n", getpid()); // replace printf to ft_printf.
+	ft_printf("PID: %d\n", getpid());
 	bits_info = malloc(sizeof(t_info));
 	sa1 = malloc(sizeof(struct sigaction));
 	sa2 = malloc(sizeof(struct sigaction));
@@ -56,7 +68,6 @@ int	main()
 	while (1)
 	{
 		pause();
-		//usleep(1000);
 		update_bits(bits_info);
 		bits_info->bits_count++;
 		if (bits_info->bits_count == 8)

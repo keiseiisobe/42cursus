@@ -1,11 +1,16 @@
-#include "minitalk_bonus.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/08 10:29:11 by kisobe            #+#    #+#             */
+/*   Updated: 2024/03/08 13:01:13 by kisobe           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/*
-__attribute__((destructor))
-static void destructor() {
-    system("leaks -q client_bonus");
-}
-*/
+#include "minitalk_bonus.h"
 
 void	send_bits(int pid, char *str)
 {
@@ -24,7 +29,8 @@ void	send_bits(int pid, char *str)
 				error_check(kill(pid, SIGUSR1) < 0);
 			else
 				error_check(kill(pid, SIGUSR2) < 0);
-			sleep(1);
+			pause();
+			usleep(500);
 			bit_shift--;
 		}
 		i++;
@@ -34,7 +40,7 @@ void	send_bits(int pid, char *str)
 void	signal_handler_client(int flag)
 {
 	(void)flag;
-	write(1, "received\n", 9);
+	return ;
 }
 
 int	main(int argc, char *argv[])
@@ -44,14 +50,18 @@ int	main(int argc, char *argv[])
 
 	(void)argc;
 	error_check(argc != 3);
-// handle for minus PID argument !!!
-// handle when pid is not accessable ???
-	pid = atoi(argv[1]);// you have to replace atoi to ft_atoi
-//---test: acknowledge sending back from server (bonus)---
+	error_check(ft_atoi(argv[1]) < 0);
+	pid = ft_atoi(argv[1]);
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = SA_RESTART;
 	sa.sa_handler = signal_handler_client;
 	sigaction(SIGUSR1, &sa, NULL);
 	send_bits(pid, argv[2]);
-	return(0);
+	return (0);
 }
+/*
+__attribute__((destructor))
+static void destructor() {
+    system("leaks -q client_bonus");
+}
+*/

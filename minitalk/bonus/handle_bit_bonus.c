@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_bit_bonus.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/08 10:29:55 by kisobe            #+#    #+#             */
+/*   Updated: 2024/03/08 11:24:34 by kisobe           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk_bonus.h"
 
 void	get_char_weight(t_info *bit_info, int bit_flag)
@@ -19,7 +31,7 @@ void	get_char_weight(t_info *bit_info, int bit_flag)
 
 void	update_bits(t_info *bit_info)
 {
-	if (sig_flag == 0)
+	if (g_flag_server == 0)
 	{
 		if (bit_info->bits_count == 1)
 			bit_info->bits = 0;
