@@ -20,7 +20,7 @@ void	signal_handler(int flag, siginfo_t *info, void *ptr)
 		g_flag_server = 0;
 	else
 		g_flag_server = 1;
-	kill(info->si_pid, SIGUSR1);
+	error_check(kill(info->si_pid, SIGUSR1) < 0, KILL);
 }
 
 void	set(t_info *bit_info, struct sigaction *sa1, struct sigaction *sa2)
@@ -37,6 +37,6 @@ void	set(t_info *bit_info, struct sigaction *sa1, struct sigaction *sa2)
 	sa2->sa_flags = SA_SIGINFO | SA_RESTART;
 	sa1->sa_sigaction = signal_handler;
 	sa2->sa_sigaction = signal_handler;
-	error_check(sigaction(SIGUSR1, sa1, NULL) < 0);
-	error_check(sigaction(SIGUSR2, sa2, NULL) < 0);
+	error_check(sigaction(SIGUSR1, sa1, NULL) < 0, SIGACTION);
+	error_check(sigaction(SIGUSR2, sa2, NULL) < 0, SIGACTION);
 }

@@ -12,6 +12,13 @@
 
 #include "minitalk.h"
 
+void	arg_check(int argc, char *argv[])
+{
+	error_check(argc != 3, ARG);
+	error_check(ft_atoi(argv[1]) < 100, PID);
+	error_check(ft_atoi(argv[1]) > INT_MAX, PID);
+}
+
 int	main(int argc, char *argv[])
 {
 	int	pid;
@@ -19,8 +26,7 @@ int	main(int argc, char *argv[])
 	int	bit;
 	int	bit_count;
 
-	error_check(argc != 3);
-	error_check(ft_atoi(argv[1]) < 0);
+	arg_check(argc, argv);
 	pid = ft_atoi(argv[1]);
 	i = 0;
 	while (argv[2][i])
@@ -30,9 +36,9 @@ int	main(int argc, char *argv[])
 		{
 			bit = (argv[2][i] >> bit_count) & 1;
 			if (bit == 0)
-				error_check(kill(pid, SIGUSR1) < 0);
+				error_check(kill(pid, SIGUSR1) < 0, KILL);
 			else
-				error_check(kill(pid, SIGUSR2) < 0);
+				error_check(kill(pid, SIGUSR2) < 0, KILL);
 			usleep(60);
 			bit_count--;
 		}

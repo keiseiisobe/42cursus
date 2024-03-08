@@ -26,9 +26,9 @@ void	send_bits(int pid, char *str)
 		{
 			bit = (str[i] >> bit_shift) & 1;
 			if (bit == 0)
-				error_check(kill(pid, SIGUSR1) < 0);
+				error_check(kill(pid, SIGUSR1) < 0, KILL);
 			else
-				error_check(kill(pid, SIGUSR2) < 0);
+				error_check(kill(pid, SIGUSR2) < 0, KILL);
 			pause();
 			usleep(500);
 			bit_shift--;
@@ -43,19 +43,24 @@ void	signal_handler_client(int flag)
 	return ;
 }
 
+void	arg_check(int argc, char *argv[])
+{
+	error_check(argc != 3, ARG);
+	error_check(ft_atoi(argv[1]) < 100, PID);
+	error_check(ft_atoi(argv[1]) > INT_MAX, PID);
+}
+
 int	main(int argc, char *argv[])
 {
 	int					pid;
 	struct sigaction	sa;
 
-	(void)argc;
-	error_check(argc != 3);
-	error_check(ft_atoi(argv[1]) < 0);
+	arg_check(argc, argv);
 	pid = ft_atoi(argv[1]);
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = SA_RESTART;
 	sa.sa_handler = signal_handler_client;
-	sigaction(SIGUSR1, &sa, NULL);
+	error_check(sigaction(SIGUSR1, &sa, NULL), SIGACTION);
 	send_bits(pid, argv[2]);
 	return (0);
 }

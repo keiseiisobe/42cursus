@@ -18,9 +18,16 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdbool.h>
-# include <string.h>
+# include <limits.h>
 # include "../libft/libft.h"
 # include "../libft/ft_printf.h"
+
+# define ARG 1
+# define PID 2
+# define MALLOC 3
+# define KILL 4
+# define SIGACTION 5
+# define WRITE 6
 
 volatile sig_atomic_t	g_flag_server;
 
@@ -32,11 +39,12 @@ typedef struct s_info {
 	int		char_index;
 }	t_info;
 
+void	arg_check(int argc, char *argv[]);
+void	error_check(bool is_error, int flag);
 void	set(t_info *bit_info, struct sigaction *sa1, struct sigaction *sa2);
 void	get_char_weight(t_info *bit_info, int bit_flag);
 void	update_bits(t_info *bit_info);
 void	ready_for_next_bits(t_info *bit_info);
-void	error_check(bool is_error);
 void	free_all(struct sigaction *sa1, struct sigaction *sa2,
 			t_info *bit_info);
 

@@ -14,13 +14,11 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int		i;
 	int		str_len;
 	char	*str_finded;
 	char	c_conv;
 
 	c_conv = c;
-	i = 0;
 	str_len = ft_strlen(s);
 	while (0 <= str_len)
 	{

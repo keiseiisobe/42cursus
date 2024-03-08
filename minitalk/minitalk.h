@@ -18,8 +18,16 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdbool.h>
+# include <limits.h>
 # include "libft/libft.h"
 # include "libft/ft_printf.h"
+
+# define ARG 1
+# define PID 2
+# define MALLOC 3
+# define KILL 4
+# define SIGACTION 5
+# define WRITE 6
 
 volatile sig_atomic_t	g_flag;
 
@@ -28,6 +36,6 @@ typedef struct s_info {
 	int	bits_count;
 }	t_info;
 
-void	error_check(bool is_error);
+void	error_check(bool is_error, int flag);
 
 #endif

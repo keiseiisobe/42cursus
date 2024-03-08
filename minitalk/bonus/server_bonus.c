@@ -18,11 +18,11 @@ int	main(void)
 	struct sigaction	*sa2;
 	t_info				*bit_info;
 
-	ft_printf("PID: %d\n", getpid());
+	error_check(ft_printf("PID: %d\n", getpid()) < 0, WRITE);
 	bit_info = malloc(sizeof(t_info));
 	sa1 = malloc(sizeof(struct sigaction));
 	sa2 = malloc(sizeof(struct sigaction));
-	error_check(bit_info == NULL || sa1 == NULL || sa2 == NULL);
+	error_check(bit_info == NULL || sa1 == NULL || sa2 == NULL, MALLOC);
 	set(bit_info, sa1, sa2);
 	while (1)
 	{

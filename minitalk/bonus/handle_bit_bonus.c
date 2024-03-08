@@ -21,7 +21,7 @@ void	get_char_weight(t_info *bit_info, int bit_flag)
 		if (count == 0)
 			count++;
 		bit_info->str = malloc((count + 1) * sizeof(char));
-		error_check(bit_info->str == NULL);
+		error_check(bit_info->str == NULL, MALLOC);
 		bit_info->char_weight = count;
 		count = 0;
 	}
