@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:51:20 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/04 17:29:52 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/13 09:32:13 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ int	ft_printf(const char *str, ...)
 	va_end(ap);
 	return (num_of_bytes);
 }
-/*
 #include <stdio.h>
 
 int	main()
@@ -133,4 +132,3 @@ int	main()
 	result1 = ft_printf("hello%c%s%p%d%u%x%X%%%s\n", c, s, &s, d, d, d, d, s2);
 	printf("%d\n", result1);
 }
-*/

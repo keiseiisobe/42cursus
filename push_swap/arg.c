@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 18:41:35 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/08 08:13:24 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/11 12:52:52 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_arg	*handle_arg(int argc, char **argv)
 		check_error(check_double_quote(argv) == false);
 	}
 	arg = malloc(sizeof(t_arg));
+	check_error(arg == NULL);
 	arg_init(arg, argc, argv);
 	return (arg);
 }

@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_bonus.c                                       :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/08 10:29:24 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/08 11:23:12 by kisobe           ###   ########.fr       */
+/*   Created: 2024/03/13 14:42:51 by kisobe            #+#    #+#             */
+/*   Updated: 2024/03/13 16:28:02 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk_bonus.h"
+#include "philo.h"
 
-void	free_all(struct sigaction *sa1, struct sigaction *sa2, t_info *bit_info)
+void	init_args(t_args *args, int argc, char *argv[])
 {
-	free(sa1);
-	free(sa2);
-	free(bit_info);
+
+}
+
+void	init_philos(t_philo *philos, t_args *args, pthread_mutex_t *mutex)
+{
+
+}
+
+void	pthread_mutex_init_all(pthread_mutex_t *mutex)
+{
+
 }

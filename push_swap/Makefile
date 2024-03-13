@@ -6,7 +6,7 @@
 #    By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/28 08:33:17 by kisobe            #+#    #+#              #
-#    Updated: 2024/03/08 08:13:03 by kisobe           ###   ########.fr        #
+#    Updated: 2024/03/08 10:23:10 by kisobe           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 		$(MAKE) -C $(LIBFTDIR)
-		$(CC) $(CFlAGS) $(LIBFT) $^ -o $@
+		$(CC) $(CFLAGS) $(LIBFT) $^ -o $@
 
 clean :
 		rm -f $(OBJS)

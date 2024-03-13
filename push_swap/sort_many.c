@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 13:14:19 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/25 16:10:00 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/11 13:07:30 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_lists	*handle_stack_a(t_lists *lists, int num_of_args)
 	while (i++ < num_of_args - 3)
 	{
 		rotate_vector = malloc(sizeof(t_vector));
+		check_error(rotate_vector == NULL);
 		opt_vector = get_cheapest(lists, rotate_vector, ASC);
 		lists = move(lists, opt_vector);
 		push_a(lists);
@@ -42,6 +43,7 @@ t_lists	*handle_stack_b(t_lists *lists, int num_of_args)
 	while (i++ < num_of_args - 6)
 	{
 		rotate_vector = malloc(sizeof(t_vector));
+		check_error(rotate_vector == NULL);
 		opt_vector = get_cheapest(lists, rotate_vector, DESC);
 		lists = move(lists, opt_vector);
 		push_b(lists);

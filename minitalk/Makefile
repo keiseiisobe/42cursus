@@ -6,7 +6,7 @@
 #    By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/08 10:28:27 by kisobe            #+#    #+#              #
-#    Updated: 2024/03/08 11:07:41 by kisobe           ###   ########.fr        #
+#    Updated: 2024/03/12 14:14:47 by kisobe           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,9 @@ NAME_C_B = client_bonus
 SRCS_S = server.c error.c
 SRCS_C = client.c error.c
 SRCS_S_B = bonus/server_bonus.c bonus/set_bonus.c bonus/handle_bit_bonus.c\
-			bonus/ready_bonus.c bonus/error_bonus.c bonus/free_bonus.c
+			bonus/ready_bonus.c bonus/error_bonus.c
 SRCS_C_B = bonus/client_bonus.c bonus/set_bonus.c bonus/handle_bit_bonus.c\
-			bonus/ready_bonus.c bonus/error_bonus.c bonus/free_bonus.c
+			bonus/ready_bonus.c bonus/error_bonus.c
 OBJS_S = $(SRCS_S:.c=.o)
 OBJS_C = $(SRCS_C:.c=.o)
 OBJS_S_B = $(SRCS_S_B:.c=.o)
@@ -36,7 +36,7 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME_S) $(NAME_C)
 
 %.o : %.c
-	$(CC) $(INCLUDE) $(CFlAGS) -c $< -o $@
+	$(CC) $(INCLUDE) $(CFLAGS) -c $< -o $@
 
 $(NAME_S) : $(OBJS_S)
 	$(MAKE) -C $(LIBFTDIR)

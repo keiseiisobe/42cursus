@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 14:33:50 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/25 14:46:54 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/11 12:54:20 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ bool	is_int_max_for_single_arg(char **argv)
 
 	flag = 0;
 	strs = ft_split(argv[1], ' ');
+	check_error(strs == NULL);
 	i = 0;
 	while (strs[i])
 	{

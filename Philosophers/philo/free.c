@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 08:24:06 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/12 12:00:33 by kisobe           ###   ########.fr       */
+/*   Created: 2024/03/13 14:47:15 by kisobe            #+#    #+#             */
+/*   Updated: 2024/03/13 16:27:19 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "philo.h"
 
-int	ft_isdigit(int c)
+void	free_all(t_philo *philo, pthread_mutex_t *mutex)
 {
-	if (('0' <= c) && (c <= '9'))
-		return (1);
-	return (0);
+	free(philo);
+	free(mutex);
 }
-/*
-int main()
-{
-	int result1;
-	int result2;
-
-	result1 = isdigit('4');
-	result2 = ft_isdigit('4');
-	printf("%d\n", result1);
-	printf("%d\n", result2);
-}
-*/

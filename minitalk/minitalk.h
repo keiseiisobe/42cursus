@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 10:28:53 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/08 11:31:05 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/12 12:20:58 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@
 
 # define ARG 1
 # define PID 2
-# define MALLOC 3
-# define KILL 4
-# define SIGACTION 5
-# define WRITE 6
+# define KILL 3
+# define SIGACTION 4
+# define WRITE 5
+
+# define TRUE 1
+# define FALSE 0
 
 volatile sig_atomic_t	g_flag;
 
@@ -37,5 +39,6 @@ typedef struct s_info {
 }	t_info;
 
 void	error_check(bool is_error, int flag);
+bool	ft_isdigit_all(char *pid);
 
 #endif

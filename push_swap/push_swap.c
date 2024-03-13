@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 08:59:30 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/25 15:34:37 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/11 13:05:22 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_vector	*update_vector(t_vector *vector, int dupe, int flag)
 	t_vector	*opt_vector;
 
 	opt_vector = malloc(sizeof(t_vector));
+	check_error(opt_vector == NULL);
 	init_vector(opt_vector);
 	opt_vector->value = vector->value;
 	if (flag == RARB)
@@ -35,6 +36,7 @@ t_lists	*push_swap(t_arg *arg)
 	t_lists	*lists;
 
 	lists = malloc(sizeof(t_lists));
+	check_error(lists == NULL);
 	lists->list_a = init_list(arg);
 	lists->list_b = NULL;
 	if (is_sorted(lists->list_a) == true)

@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:02:00 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/25 16:11:39 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/11 13:19:12 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	*convert_args_for_single_arg(t_arg *arg)
 	check_error(arg_tmp == NULL);
 	arg->num_of_args = count_num_of_args(arg_tmp);
 	nums = malloc(arg->num_of_args * sizeof(int));
+	check_error(nums == NULL);
 	i = 0;
 	while (i < arg->num_of_args)
 	{
@@ -42,6 +43,7 @@ int	*convert_args_for_multiple_arg(t_arg *arg)
 
 	arg->num_of_args = count_num_of_args(arg->argv) - 1;
 	nums = malloc(arg->num_of_args * sizeof(int));
+	check_error(nums == NULL);
 	i = 0;
 	while (i < arg->num_of_args)
 	{
@@ -80,15 +82,15 @@ t_node	*init_list(t_arg *arg)
 	nums = convert_args_to_int_arr(arg);
 	i = 0;
 	node = malloc(sizeof(t_node));
+	check_error(node == NULL);
 	node->value = nums[i++];
 	list_a = create_first_node(node);
 	while (i < arg->num_of_args)
 	{
 		node = malloc(sizeof(t_node));
+		check_error(node == NULL);
 		node->value = nums[i++];
-		tmp = list_a;
-		while (tmp->next != list_a)
-			tmp = tmp->next;
+		tmp = list_a->prev;
 		tmp->next = node;
 		node->prev = tmp;
 		node->next = list_a;

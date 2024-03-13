@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 10:29:11 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/08 13:01:13 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/12 12:41:15 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	signal_handler_client(int flag)
 void	arg_check(int argc, char *argv[])
 {
 	error_check(argc != 3, ARG);
+	error_check(ft_isdigit_all(argv[1]) == false, PID);
 	error_check(ft_atoi(argv[1]) < 100, PID);
 	error_check(ft_atoi(argv[1]) > INT_MAX, PID);
 }

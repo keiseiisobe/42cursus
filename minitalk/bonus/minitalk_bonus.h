@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 10:29:31 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/08 11:31:26 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/12 12:43:30 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@
 # define SIGACTION 5
 # define WRITE 6
 
+# define TRUE 1
+# define FALSE 0
+
 volatile sig_atomic_t	g_flag_server;
 
 typedef struct s_info {
@@ -41,11 +44,10 @@ typedef struct s_info {
 
 void	arg_check(int argc, char *argv[]);
 void	error_check(bool is_error, int flag);
-void	set(t_info *bit_info, struct sigaction *sa1, struct sigaction *sa2);
-void	get_char_weight(t_info *bit_info, int bit_flag);
+bool	ft_isdigit_all(char *pid);
+void	set(t_info *bit_info, struct sigaction *sa);
+void	get_char_weight(t_info *bit_info);
 void	update_bits(t_info *bit_info);
 void	ready_for_next_bits(t_info *bit_info);
-void	free_all(struct sigaction *sa1, struct sigaction *sa2,
-			t_info *bit_info);
 
 #endif

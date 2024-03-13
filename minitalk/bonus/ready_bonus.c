@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 10:30:05 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/08 11:25:11 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/12 12:45:45 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	ready_for_next_bits(t_info *bit_info)
 		if (bit_info->char_index == bit_info->char_weight)
 		{
 			bit_info->str[bit_info->char_index++] = '\0';
-			error_check(write(1, bit_info->str, ft_strlen(bit_info->str) + 1) < 0, WRITE);
+			error_check(write(1, bit_info->str, ft_strlen(bit_info->str) + 1)
+				< 0, WRITE);
 		}
 		reset(bit_info);
 	}

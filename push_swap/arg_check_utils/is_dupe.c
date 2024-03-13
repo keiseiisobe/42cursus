@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 14:35:04 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/25 14:46:14 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/11 13:13:59 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ bool	is_dupe_for_single_arg(char **argv)
 	int		flag;
 
 	strs = ft_split(argv[1], ' ');
+	check_error(strs == NULL);
 	flag = 0;
 	i = 0;
 	while (strs[i + 1])
@@ -36,9 +37,7 @@ bool	is_dupe_for_single_arg(char **argv)
 	while (strs[i])
 		free(strs[i++]);
 	free(strs);
-	if (flag == 1)
-		return (false);
-	return (true);
+	return (flag == 0);
 }
 
 bool	is_dupe_for_multi_args(char **argv)

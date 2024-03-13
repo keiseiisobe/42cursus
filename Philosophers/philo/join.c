@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   join.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 08:24:06 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/12 12:00:33 by kisobe           ###   ########.fr       */
+/*   Created: 2024/03/13 14:49:30 by kisobe            #+#    #+#             */
+/*   Updated: 2024/03/13 16:28:19 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "philo.h"
 
-int	ft_isdigit(int c)
+void	pthread_join_all(t_philo *philos, int num_of_philos)
 {
-	if (('0' <= c) && (c <= '9'))
-		return (1);
-	return (0);
-}
-/*
-int main()
-{
-	int result1;
-	int result2;
+	int	i;
 
-	result1 = isdigit('4');
-	result2 = ft_isdigit('4');
-	printf("%d\n", result1);
-	printf("%d\n", result2);
+	i = 0;
+	while (i < num_of_philos)
+	{
+		pthread_join(philos[i].thread, NULL);
+		i++;
+	}
 }
-*/

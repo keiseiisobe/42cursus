@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 14:36:05 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/25 14:46:04 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/11 12:52:21 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ bool	check_double_quote(char **argv)
 	while (argv[i])
 	{
 		strs = ft_split(argv[i], ' ');
+		check_error(strs == NULL);
 		if (strs[1] != '\0')
 			flag = 1;
 		j = 0;

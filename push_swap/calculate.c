@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 08:50:51 by kisobe            #+#    #+#             */
-/*   Updated: 2024/02/25 15:16:45 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/11 12:56:57 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ t_vector	*get_cheapest(t_lists *lists, t_vector *rotate_vector, int flag)
 	t_vector	*opt_vector;
 
 	variables = malloc(sizeof(t_init));
+	check_error(variables == NULL);
 	init_variables(variables, lists, flag);
 	opt_vector = NULL;
 	while (variables->tmp->next != variables->list_tmp)

@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 10:28:37 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/08 11:16:21 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/12 12:41:31 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	arg_check(int argc, char *argv[])
 {
 	error_check(argc != 3, ARG);
+	error_check(ft_isdigit_all(argv[1]) == false, PID);
 	error_check(ft_atoi(argv[1]) < 100, PID);
 	error_check(ft_atoi(argv[1]) > INT_MAX, PID);
 }
@@ -39,9 +40,10 @@ int	main(int argc, char *argv[])
 				error_check(kill(pid, SIGUSR1) < 0, KILL);
 			else
 				error_check(kill(pid, SIGUSR2) < 0, KILL);
-			usleep(60);
+			usleep(500);
 			bit_count--;
 		}
 		i++;
 	}
+	return (0);
 }
