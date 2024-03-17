@@ -6,44 +6,57 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 12:03:44 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/13 16:53:08 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/17 12:34:38 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char *argv[]) // ./philo [num_of_philos] [time_to_die] [time_to_eat] [time_to_sleep] ([num_of_times_each_philo_must_eat])
+__attribute__((destructor))
+static void destructor() {
+    system("leaks -q philo");
+}
+
+int	main(int argc, char *argv[])
 {
 	int				i;
+	t_philo_info	*tmp;
 	t_args			args;
-	t_philo			*philos;// "struct philo"s array
-	pthread_t		*thread;
-	pthread_mutex_t	*mutex;
+	t_philo_info	philo;
+	t_philo_info	*philos;
+	pthread_t		monitor;
 
-	if (args_are_invalid(argc, argv) == true);
-		return (EXIT_FAILURE);
-	init_args(&args, argc, argv);
-	// peer model
-	mutex = malloc((args.num_of_philos + 1) * sizeof(pthread_mutex_t));
-	if (check_error(mutex == NULL) == true)
+	if (handle_args(&args, argc, argv) == RETURN_FAILURE)
+		return (RETURN_FAILURE);
+	philos = init_philos_list(&philo, &args);
+	if (philos == NULL)
+		return (RETURN_FAILURE);
+	pthread_create(&monitor, NULL, monitor_the_end_of_simulation, philos);
+	i = 1;
+	tmp = philos;
+	while (i <= args.num_of_philos)
 	{
-		free(philos);
-		return (EXIT_FAILURE);
-	}
-	pthread_mutex_init_all(mutex);// how to use in take_a_fork func ???
-	philos = malloc((args.num_of_philos + 1) * sizeof(t_philo));
-	if (check_error(philos == NULL) == true)
-		return (EXIT_FAILURE);
-	init_philos(philos, &args, mutex);
-	// create all threads first. but monitoring thread is ...?
-	i = 0;
-	while (i < args.num_of_philos)
-	{
-		pthread_create(philos[i].thread, NULL, philo_do, &philos[i]);
+		pthread_create(&tmp->thread_id, NULL, philo_do, tmp);
+		tmp = tmp->next;
 		i++;
 	}
 	// pthread_detach is better ??? it may be useful for monitoring thread.
-	pthread_join_all(&philos, args.num_of_philos);
-	free_all(philos, mutex);
-	return (0);
+	monitor_the_end_of_simulation(philos);
+	pthread_join_all(philos, args.num_of_philos, monitor);
+	free_all(philos);
+	return (RETURN_SUCCESS);
 }
+
+/*
+//------print for test----------
+	t_philo_info	*tmp;
+
+	tmp = philos;
+	while (tmp->next != philos)
+	{
+		printf("name is %d, address is %p, prev is %p, next is %p, fork is %p\n", tmp->name, tmp, tmp->prev, tmp->next, &tmp->fork);
+		tmp = tmp->next;
+	}
+	printf("name is %d, address is %p, prev is %p, next is %p, fork is %p\n", tmp->name, tmp, tmp->prev, tmp->next, &tmp->fork);
+//---------------------------
+*/

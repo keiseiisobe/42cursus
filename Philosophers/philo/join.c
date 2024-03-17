@@ -6,20 +6,24 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:49:30 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/13 16:28:19 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/17 12:31:42 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	pthread_join_all(t_philo *philos, int num_of_philos)
+void	pthread_join_all(t_philo_info *philos, int num_of_philos, pthread_t monitor)
 {
-	int	i;
+	int				i;
+	t_philo_info	*tmp;
 
-	i = 0;
-	while (i < num_of_philos)
+	pthread_join(monitor, NULL);
+	i = 1;
+	tmp = philos;
+	while (i <= num_of_philos)
 	{
-		pthread_join(philos[i].thread, NULL);
+		pthread_join(tmp->thread_id, NULL);
+		tmp = tmp->next;
 		i++;
 	}
 }

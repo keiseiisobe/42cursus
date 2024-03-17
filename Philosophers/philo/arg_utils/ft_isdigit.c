@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 14:47:15 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/16 14:48:07 by kisobe           ###   ########.fr       */
+/*   Created: 2024/01/10 08:24:06 by kisobe            #+#    #+#             */
+/*   Updated: 2024/03/17 10:35:11 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
-
-void	free_all(t_philo_info *philos)
+int	ft_isdigit(int c)
 {
-	t_philo_info	*tmp;
-
-	tmp = philos;
-	while (tmp->next != philos)
-	{
-		free(tmp);
-		tmp = tmp->next;
-	}
-	free(tmp);
+	if (('0' <= c) && (c <= '9'))
+		return (1);
+	return (0);
 }

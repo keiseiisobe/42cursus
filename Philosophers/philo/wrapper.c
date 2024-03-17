@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   wrapper.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 14:47:15 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/16 14:48:07 by kisobe           ###   ########.fr       */
+/*   Created: 2024/03/16 13:17:29 by kisobe            #+#    #+#             */
+/*   Updated: 2024/03/16 13:53:53 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	free_all(t_philo_info *philos)
+int	wrapper_printf(char *str, suseconds_t timestamp_in_ms, int philo_name, int dead_flag)
 {
-	t_philo_info	*tmp;
-
-	tmp = philos;
-	while (tmp->next != philos)
+	if (dead_flag == 0)
 	{
-		free(tmp);
-		tmp = tmp->next;
+		printf(str, timestamp_in_ms, philo_name);
+		return (CONTINUE);
 	}
-	free(tmp);
+	else
+		return (CANCEL);
 }
