@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 10:08:11 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/17 12:14:48 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/20 16:19:20 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ bool	is_less_than(int num, int argc, char **argv)
 	}
 	else if (num == 60)
 	{
-		if (ft_atoi(argv[2]) < 60 || ft_atoi(argv[3]) < 60 || ft_atoi(argv[4]) < 60)
+		if (ft_atoi(argv[2]) < 60 || ft_atoi(argv[3]) < 60
+			|| ft_atoi(argv[4]) < 60)
 			return (true);
 	}
 	return (false);
@@ -61,7 +62,8 @@ bool	is_more_than(long num, int argc, char **argv)
 	}
 	else if (num == INT_MAX)
 	{
-		if (ft_atoi(argv[2]) == OVER_INT_MAX || ft_atoi(argv[3]) == OVER_INT_MAX || ft_atoi(argv[4]) == OVER_INT_MAX)
+		if (ft_atoi(argv[2]) == OVER_INT_MAX || ft_atoi(argv[3])
+			== OVER_INT_MAX || ft_atoi(argv[4]) == OVER_INT_MAX)
 			return (true);
 		if (argc == 6)
 		{

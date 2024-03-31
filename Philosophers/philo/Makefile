@@ -1,9 +1,10 @@
 NAME = philo
 SRCS = arg.c arg_utils/arg_utils.c arg_utils/ft_atoi.c\
-	   arg_utils/ft_isdigit.c error.c free.c init.c\
-	   join.c main.c monitor.c routine.c wrapper.c
+	   arg_utils/ft_isdigit.c error.c init.c join.c main.c\
+	   monitor.c routine.c routine_utils.c wrapper.c free.c
 OBJS = $(SRCS:.c=.o)
-CFLAGS = -Wall -Wextra -Werror
+CC = cc
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address #-g3 -fsanitize=thread
 
 all : $(NAME)
 

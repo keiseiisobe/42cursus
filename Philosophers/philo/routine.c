@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:01:50 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/17 12:26:23 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/31 10:24:53 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,115 +14,103 @@
 
 int	ft_take_forks(t_philo_info *philo)
 {
-	struct timeval	tp;
-
 	pthread_mutex_lock(&philo->fork);
-	gettimeofday(&tp, NULL);
-	pthread_mutex_lock(&philo->print);
-	if (wrapper_printf("%d %d has taken a fork\n", tp.tv_usec / 1000, philo->name, philo->dead_flag) == CANCEL)
+	pthread_mutex_lock(&philo->data->dead_flag_key);
+	if (wrapper_printf("%zu %d has taken a fork\n", get_current_time(philo->data
+				->start_time), philo, philo->data->dead_flag) == CANCEL)
 	{
-		pthread_mutex_unlock(&philo->print);
+		pthread_mutex_unlock(&philo->data->dead_flag_key);
+		pthread_mutex_unlock(&philo->fork);
 		return (CANCEL);
 	}
-	pthread_mutex_unlock(&philo->print);
+	pthread_mutex_unlock(&philo->data->dead_flag_key);
+	if (handle_one_philo(philo) == CANCEL)
+		return (CANCEL);
 	pthread_mutex_lock(&philo->next->fork);
-	gettimeofday(&tp, NULL);
-	pthread_mutex_lock(&philo->print);
-	if (wrapper_printf("%d %d has taken a fork\n", tp.tv_usec / 1000, philo->name, philo->dead_flag) == CANCEL)
+	pthread_mutex_lock(&philo->data->dead_flag_key);
+	if (wrapper_printf("%zu %d has taken a fork\n", get_current_time(philo->data
+				->start_time), philo, philo->data->dead_flag) == CANCEL)
 	{
-		pthread_mutex_unlock(&philo->print);
+		pthread_mutex_unlock(&philo->data->dead_flag_key);
+		pthread_mutex_unlock(&philo->fork);
+		pthread_mutex_unlock(&philo->next->fork);
 		return (CANCEL);
 	}
-	pthread_mutex_unlock(&philo->print);
+	pthread_mutex_unlock(&philo->data->dead_flag_key);
 	return (CONTINUE);
-}
-
-void	update_time_to_start_eating(t_philo_info *philo)
-{
-	struct timeval	tp;
-
-	gettimeofday(&tp, NULL);
-	philo->time_to_start_eating = tp.tv_usec;
 }
 
 int	ft_eat(t_philo_info *philo)
 {
-	struct timeval	tp;
-
 	update_time_to_start_eating(philo);
-	// does it handle for the beggining of simulation ???
-	gettimeofday(&tp, NULL);
-	pthread_mutex_lock(&philo->print);
-	if (wrapper_printf("%d %d is eating\n", tp.tv_usec / 1000, philo->name, philo->dead_flag) == CANCEL)
+	pthread_mutex_lock(&philo->data->dead_flag_key);
+	if (wrapper_printf("%zu %d is eating\n",
+			get_current_time(philo->data->start_time),
+			philo, philo->data->dead_flag) == CANCEL)
 	{
-		pthread_mutex_unlock(&philo->print);
+		pthread_mutex_unlock(&philo->data->dead_flag_key);
+		pthread_mutex_unlock(&philo->fork);
+		pthread_mutex_unlock(&philo->next->fork);
 		return (CANCEL);
 	}
-	pthread_mutex_unlock(&philo->print);
-	usleep(philo->args->time_to_eat * 1000);
+	pthread_mutex_unlock(&philo->data->dead_flag_key);
+	ft_msleep(philo->data->time_to_eat);
 	pthread_mutex_unlock(&philo->fork);
 	pthread_mutex_unlock(&philo->next->fork);
+	pthread_mutex_lock(&philo->updated_time_key);
 	philo->num_of_times_of_eating++;
+	pthread_mutex_unlock(&philo->updated_time_key);
 	return (CONTINUE);
 }
 
 int	ft_sleep(t_philo_info *philo)
 {
-	struct timeval	tp;
-
-	gettimeofday(&tp, NULL);
-	pthread_mutex_lock(&philo->print);
-	if (wrapper_printf("%d %d is sleeping\n", tp.tv_usec / 1000, philo->name, philo->dead_flag) == CANCEL)
+	pthread_mutex_lock(&philo->data->dead_flag_key);
+	if (wrapper_printf("%zu %d is sleeping\n",
+			get_current_time(philo->data->start_time),
+			philo, philo->data->dead_flag) == CANCEL)
 	{
-		pthread_mutex_unlock(&philo->print);
+		pthread_mutex_unlock(&philo->data->dead_flag_key);
 		return (CANCEL);
 	}
-	pthread_mutex_unlock(&philo->print);
-	usleep(philo->args->time_to_sleep * 1000);
+	pthread_mutex_unlock(&philo->data->dead_flag_key);
+	ft_msleep(philo->data->time_to_sleep);
 	return (CONTINUE);
 }
 
 int	ft_think(t_philo_info *philo)
 {
-	struct timeval	tp;
-
-	gettimeofday(&tp, NULL);
-	pthread_mutex_lock(&philo->print);
-	if (wrapper_printf("%d %d is thinking\n", tp.tv_usec / 1000, philo->name, philo->dead_flag) == CANCEL)
+	pthread_mutex_lock(&philo->data->dead_flag_key);
+	if (wrapper_printf("%zu %d is thinking\n",
+			get_current_time(philo->data->start_time),
+			philo, philo->data->dead_flag) == CANCEL)
 	{
-		pthread_mutex_unlock(&philo->print);
+		pthread_mutex_unlock(&philo->data->dead_flag_key);
 		return (CANCEL);
 	}
-	pthread_mutex_unlock(&philo->print);
+	pthread_mutex_unlock(&philo->data->dead_flag_key);
 	return (CONTINUE);
-}
-
-
-void	check_if_odd_philo(t_philo_info *philo)
-{
-	if (philo->name % 2 == 0)
-		usleep(200);
 }
 
 void	*philo_do(void *philo_info)
 {
 	t_philo_info	*philo;
-	struct timeval	tp;
 
 	philo = (t_philo_info *)philo_info;
-	gettimeofday(&tp, NULL);
-	philo->time_to_start_eating = tp.tv_usec;
+	pthread_mutex_lock(&philo->updated_time_key);
+	philo->time_to_start_eating = get_current_time(0);
+	pthread_mutex_unlock(&philo->updated_time_key);
 	check_if_odd_philo(philo);
-	while (1) // is there race condition ???
+	while (1)
 	{
 		if (ft_take_forks(philo) == CANCEL)
-			break;
+			break ;
 		if (ft_eat(philo) == CANCEL)
-			break;
+			break ;
 		if (ft_sleep(philo) == CANCEL)
-			break;
+			break ;
 		if (ft_think(philo) == CANCEL)
-			break;
+			break ;
 	}
 	return (NULL);
 }

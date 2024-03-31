@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 21:14:03 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/11 13:03:56 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/31 14:19:42 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char *argv[])
 /*
 __attribute__((destructor))
 static void	destructor(void) {
-	system("leaks -q push_swap");
+	system("leaks push_swap");
 }
 */
 /*

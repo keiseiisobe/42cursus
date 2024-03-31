@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 10:28:37 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/12 12:41:31 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/16 16:59:33 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char *argv[])
 				error_check(kill(pid, SIGUSR1) < 0, KILL);
 			else
 				error_check(kill(pid, SIGUSR2) < 0, KILL);
-			usleep(500);
+			usleep(700);
 			bit_count--;
 		}
 		i++;

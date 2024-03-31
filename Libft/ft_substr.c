@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 07:23:12 by kisobe            #+#    #+#             */
-/*   Updated: 2024/01/15 15:23:26 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/20 18:06:13 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	*ft_input_str(size_t len, unsigned int start, char const *s)
 		len = s_len;
 	if (s_len < start)
 		len = 0;
-	s_copy = malloc(len * sizeof(char) + 1);
+	s_copy = malloc((len + 1) * sizeof(char));
 	if (s_copy == NULL)
 		return (NULL);
 	i = 0;

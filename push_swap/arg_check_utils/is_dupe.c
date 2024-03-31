@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 14:35:04 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/11 13:13:59 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/14 14:41:37 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ bool	is_dupe_for_single_arg(char **argv)
 		j = i + 1;
 		while (strs[j])
 		{
-			if (ft_strncmp(strs[i], strs[j++], ft_strlen(strs[i]) + 1) == 0)
+			if (ft_atoi(strs[i]) - ft_atoi(strs[j]) == SAME)
 				flag = 1;
+			j++;
 		}
 		i++;
 	}
@@ -51,7 +52,7 @@ bool	is_dupe_for_multi_args(char **argv)
 		j = i + 1;
 		while (argv[j])
 		{
-			if (ft_strncmp(argv[i], argv[j], ft_strlen(argv[i]) + 1) == 0)
+			if (ft_atoi(argv[i]) - ft_atoi(argv[j]) == SAME)
 				return (false);
 			j++;
 		}

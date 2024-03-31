@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 09:52:11 by kisobe            #+#    #+#             */
-/*   Updated: 2024/01/19 16:21:13 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/20 18:05:44 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	pp = (char **)malloc(ft_strscount(s, c) * sizeof(char *) + 1);
+	pp = (char **)malloc((ft_strscount(s, c) + 1) * sizeof(char *));
 	if (!pp)
 		return (NULL);
 	strs_count = 0;
