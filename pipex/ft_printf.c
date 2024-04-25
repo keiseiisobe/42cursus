@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:51:20 by kisobe            #+#    #+#             */
-/*   Updated: 2024/04/23 17:56:36 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/03/13 09:32:13 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,11 +124,11 @@ int	main()
 	int result2;
 	char	c = 0xFF;
 	char	*s = "world";
-	int		d = -1;
+	int		d = -42;
 	char	*s2 = NULL;
 
-	result2 = printf("hello%c%s%p%d%u %x %X%%%s\n", c, s, &s, d, d, d, d, s2);
+	result2 = printf("hello%c%s%p%d%u%x%X%%%s\n", c, s, &s, d, d, d, d, s2);
 	printf("%d\n", result2);
-	result1 = ft_printf("hello%c%s%p%d%u %x %X%%%s\n", c, s, &s, d, d, d, d, s2);
+	result1 = ft_printf("hello%c%s%p%d%u%x%X%%%s\n", c, s, &s, d, d, d, d, s2);
 	printf("%d\n", result1);
 }

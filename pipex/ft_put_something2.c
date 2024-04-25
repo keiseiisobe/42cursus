@@ -6,7 +6,7 @@
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:13:55 by kisobe            #+#    #+#             */
-/*   Updated: 2024/04/23 18:01:12 by kisobe           ###   ########.fr       */
+/*   Updated: 2024/02/04 17:24:56 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_put_address(uintptr_t n, int *p)
 	return (*p);
 }
 
-int	ft_put_hexadec_low(unsigned int n, int *p)
+int	ft_put_hexadec_low(unsigned int n, int	*p)
 {
 	char			base[16];
 	char			c;
