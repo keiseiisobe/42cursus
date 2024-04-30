@@ -3,23 +3,52 @@
 
 int	main()
 {
-	PhoneBook	book(8);
+	PhoneBook	pb(8);
+	Contact		c;
 	t_info		contact;
+	std::string	input;
+	int			index;
+	int			num_of_elem;
 
-	Contact	c;
-	c.put_all_contact_fields();
-	for (int i = 0; i < 15; i++)
+	while (1)
 	{
-		contact.index = i;
-		contact.first_name = "keisei";
-		contact.last_name = "isobe";
-		contact.nickname = "kisobe";
-		contact.phone_number = "08011112222";
-		contact.darkest_secret = "address:...";
-		book.add_contact(&contact);
+		std::cout << "Enter your command ( ADD, SEARCH, EXIT ):" << std::endl;
+		getline(std::cin, input);
+		if (input.length() != 0)
+		{
+			if (input == "ADD")
+			{
+				c.put_all_fields_into_contact(&contact);
+				pb.add_contact(&contact);
+				std::cout << "Successfully added new contact!" << std::endl;
+			}
+			else if (input == "SEARCH")
+			{
+				if ((num_of_elem = pb.print_all_contacts()) > 0)
+				{
+					std::cout << "Enter an index of which is a contact you want to see:" << std::endl;
+					getline(std::cin, input);
+					if (valid_number(input))
+					{
+						index = std::stoi(input);
+						if (index >= 1  && index <= num_of_elem)
+							pb.print_contact(index - 1);
+						else
+							std::cout << "Invalid index !" << std::endl;
+					}
+					else
+						std::cout << "Invalid index !" << std::endl;
+				}
+			}
+			else if (input == "EXIT")
+				break ;
+			else
+			{
+				std::cout << "Invalid command !" << std::endl;
+				std::cout << "Retry..." << std::endl;
+			}
+			std::cout << std::endl << std::endl;
+		}
 	}
-	book.delete_contact(4);
-	book.print_all_contacts();
-	book.print_contact(1);
 	return 0;
 }

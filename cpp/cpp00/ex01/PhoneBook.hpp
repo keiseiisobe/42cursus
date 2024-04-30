@@ -7,7 +7,6 @@
 
 typedef struct	s_info
 {
-	int			index;
 	std::string	first_name;
 	std::string	last_name;
 	std::string	nickname;
@@ -24,9 +23,9 @@ class	PhoneBook
 		PhoneBook(const int sz);
 		~PhoneBook();
 		int		get_size() const;
-		void	add_contact(const t_info *contact);
-		void	delete_contact(int i);
-		void	print_all_contacts() const;
+		void	add_contact(t_info *contact);
+		void	move_contact(int i);
+		int		print_all_contacts() const;
 		void	print_contact(int i) const;
 };
 
