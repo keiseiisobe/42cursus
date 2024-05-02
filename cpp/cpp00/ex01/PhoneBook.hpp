@@ -29,4 +29,6 @@ class	PhoneBook
 		void	print_contact(int i) const;
 };
 
+std::string	accept_next_command(void);
+
 #endif

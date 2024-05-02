@@ -17,7 +17,6 @@ bool	valid_name(const std::string first_name)
 		// should cast be modified ???
 		if (!std::isalpha(first_name[i]))
 			return false;
-	std::cout << "Validated!" << std::endl;
 	return true;
 }
 
@@ -29,7 +28,6 @@ bool	valid_number(const std::string number)
 		// should cast be modified ???
 		if (!std::isdigit(number[i]))
 			return false;
-	std::cout << "Validated!" << std::endl;
 	return true;
 }
 
@@ -47,7 +45,7 @@ void	Contact::put_first_name(t_info *contact)
 			break ;
 		}
 		std::cout << "Invalid format for 'first name'!" << std::endl;
-		std::cout << "Retry..." << std::endl;
+		std::cout << "Retry" << std::endl << "..." << std::endl << "..." << std::endl;
 	}
 };
 
@@ -65,7 +63,7 @@ void	Contact::put_last_name(t_info *contact)
 			break ;
 		}
 		std::cout << "Invalid format for 'last name'!" << std::endl;
-		std::cout << "Retry..." << std::endl;
+		std::cout << "Retry" << std::endl << "..." << std::endl << "..." << std::endl;
 	}
 };
 
@@ -83,7 +81,7 @@ void	Contact::put_nickname(t_info *contact)
 			break ;
 		}
 		std::cout << "Invalid format for 'nickname'!" << std::endl;
-		std::cout << "Retry..." << std::endl;
+		std::cout << "Retry" << std::endl << "..." << std::endl << "..." << std::endl;
 	}
 };
 
@@ -101,7 +99,7 @@ void	Contact::put_phone_number(t_info *contact)
 			break ;
 		}
 		std::cout << "Invalid format for 'phone number'!" << std::endl;
-		std::cout << "Retry..." << std::endl;
+		std::cout << "Retry" << std::endl << "..." << std::endl << "..." << std::endl;
 	}
 };
 
@@ -119,6 +117,6 @@ void	Contact::put_darkest_secret(t_info *contact)
 			break ;
 		}
 		std::cout << "Invalid format for 'darkest secret'!" << std::endl;
-		std::cout << "Retry..." << std::endl;
+		std::cout << "Retry" << std::endl << "..." << std::endl << "..." << std::endl;
 	}
 };

@@ -12,7 +12,7 @@ int	main()
 
 	while (1)
 	{
-		std::cout << "Enter your command ( ADD, SEARCH, EXIT ):" << std::endl;
+		std::cout << "Enter your command (ADD, SEARCH, EXIT):" << std::endl;
 		getline(std::cin, input);
 		if (input.length() != 0)
 		{
@@ -24,20 +24,34 @@ int	main()
 			}
 			else if (input == "SEARCH")
 			{
-				if ((num_of_elem = pb.print_all_contacts()) > 0)
+				while (1)
 				{
-					std::cout << "Enter an index of which is a contact you want to see:" << std::endl;
-					getline(std::cin, input);
-					if (valid_number(input))
+					if ((num_of_elem = pb.print_all_contacts()) > 0)
 					{
-						index = std::stoi(input);
-						if (index >= 1  && index <= num_of_elem)
-							pb.print_contact(index - 1);
-						else
-							std::cout << "Invalid index !" << std::endl;
+						std::cout << "Enter an index you want to see:" << std::endl;
+						getline(std::cin, input);
+						if (input.length() != 0)
+						{
+							if (valid_number(input))
+							{
+								index = std::stoi(input);
+								if (index >= 1  && index <= num_of_elem)
+									pb.print_contact(index - 1);
+								else
+									std::cout << "Invalid index !" << std::endl;
+							}
+							else
+								std::cout << "Invalid index !" << std::endl;
+							std::cout << std::endl;
+							input = accept_next_command();
+							if (input == "CONTINUE")
+								continue ;
+							else //(input == "TOP")
+								break ;
+						}
 					}
 					else
-						std::cout << "Invalid index !" << std::endl;
+						break ;
 				}
 			}
 			else if (input == "EXIT")
@@ -45,9 +59,9 @@ int	main()
 			else
 			{
 				std::cout << "Invalid command !" << std::endl;
-				std::cout << "Retry..." << std::endl;
+				std::cout << "Retry" << std::endl << "..." << std::endl << "..." << std::endl;
 			}
-			std::cout << std::endl << std::endl;
+			std::cout << std::endl;
 		}
 	}
 	return 0;
