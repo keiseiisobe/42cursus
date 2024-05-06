@@ -10,5 +10,6 @@ int	main()
 	h.complain("INFO");
 	h.complain("WARNING");
 	h.complain("ERROR");
+	h.complain("ERRO");
 	return 0;
 }

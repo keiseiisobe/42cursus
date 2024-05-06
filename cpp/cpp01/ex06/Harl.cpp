@@ -41,10 +41,16 @@ void	Harl::error(void)
 	std::cout << std::endl;
 }
 
+void	Harl::nothing(void)
+{
+	std::cout << "[ I don't care about anything. ]" << std::endl;
+	std::cout << std::endl;
+}
+
 void	Harl::complain(std::string level)
 {
 	typedef void	(Harl::*funcs)(void);
-	funcs			f[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	funcs			f[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error, &Harl::nothing};
 	std::string		levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	const int		l_size = sizeof(levels) / sizeof(levels[0]);
 	int				i;
@@ -54,6 +60,18 @@ void	Harl::complain(std::string level)
 		if (level == levels[i])
 			break;
 	}
-	if (i != l_size)
-		(this->*f[i])();
+	switch (i)
+	{
+		case 0:
+			(this->*f[0])();
+		case 1:
+			(this->*f[1])();
+		case 2:
+			(this->*f[2])();
+		case 3:
+			(this->*f[3])();
+			break;
+		default:
+			(this->*f[4])();
+	}
 }
