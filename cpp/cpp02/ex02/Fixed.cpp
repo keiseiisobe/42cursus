@@ -46,13 +46,11 @@ Fixed::~Fixed()
 
 int	Fixed::getRawBits(void) const
 {
-//	std::cout << "getRawBits member function called" << std::endl;
 	return fixed_point_num;
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-//	std::cout << "setRawBits member function called" << std::endl;
 	fixed_point_num = raw;
 }
 
@@ -74,29 +72,14 @@ float	Fixed::toFloat(void) const
 	return (num);
 }
 
+const Fixed&	Fixed::min(const Fixed& a, const Fixed& b)
+{
+	if (a.getRawBits() <= b.getRawBits())
+		return (a);
+	return (b);
+}
+
 std::ostream&	operator<<(std::ostream&, const Fixed& f)
 {
 	return std::cout << f.toFloat();
 }
-/*
-void	Fixed::print(void) const
-{
-	int	integer = fixed_point_num; 
-	int	fraction_bits = (fixed_point_num & 0x000000FF);
-	int	fraction = 255;
-
-	std::cout << "fixed_point_num: ";
-	for (int i = 31;i >= 0;i--)
-		std::cout << ((fixed_point_num >> i) & 1);
-	std::cout << std::endl;
-
-	for (int i = 0;i < num_of_bits;i++)
-		integer /= 2;
-	for (int i = 7;i >= 0;i--)
-	{
-		if ((fraction_bits >> i) & 0x1)
-			fraction /= 2;
-	}
-	std::cout << integer << "." << fraction << std::endl;
-}
-*/
