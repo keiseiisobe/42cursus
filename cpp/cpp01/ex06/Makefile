@@ -1,12 +1,8 @@
-NAME = Harl
+NAME = harlFilter
 SRCS = main.cpp Harl.cpp
 OBJS = $(SRCS:.cpp=.o)
 CC = c++
-<<<<<<< HEAD
-CFLAGS = -Wall -Wextra -Werror -std=c++98
-=======
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address -std=c++98
->>>>>>> 0374c07c39c88d60742de49f54f21b9bb2399ee8
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
