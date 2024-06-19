@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_double_quote.c                               :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/25 14:36:05 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/14 12:27:27 by kisobe           ###   ########.fr       */
+/*   Created: 2024/01/11 07:03:04 by kisobe            #+#    #+#             */
+/*   Updated: 2024/01/15 07:30:47 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../include/libft.h"
 
-bool	check_double_quote(char **argv)
+char	*ft_strdup(const char *s1)
 {
+	int		str_len;
+	char	*p;
 	int		i;
-	int		j;
-	char	**strs;
-	int		flag;
 
-	flag = 0;
-	i = 1;
-	while (argv[i])
+	str_len = ft_strlen(s1);
+	p = (char *)xmalloc((str_len + 1) * sizeof(char));
+	if (p == NULL)
+		return (NULL);
+	i = 0;
+	while (s1[i])
 	{
-		strs = ft_split(argv[i], ' ');
-		check_error(strs == NULL);
-		if (strs[1] != (void *)'\0')
-			flag = 1;
-		j = 0;
-		while (strs[j])
-			free(strs[j++]);
-		free(strs);
+		p[i] = s1[i];
 		i++;
 	}
-	if (flag == 1)
-		return (false);
-	return (true);
+	p[i] = '\0';
+	return (p);
 }

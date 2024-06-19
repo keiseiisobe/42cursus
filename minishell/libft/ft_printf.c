@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/libft.h"
 
 void	handle_c_to_p(va_list ap, const char *str, unsigned int *i_p,
 		int *num_of_bytes_p)
@@ -115,20 +115,4 @@ int	ft_printf(const char *str, ...)
 	}
 	va_end(ap);
 	return (num_of_bytes);
-}
-#include <stdio.h>
-
-int	main()
-{
-//	int result1;
-	int result2;
-//	char	c = 0xFF;
-//	char	*s = "world";
-//	int		d = -1;
-//	char	*s2 = NULL;
-
-	printf("hello");
-//	printf("%d\n", result2);
-//	result1 = ft_printf("hello");
-//	printf("%d\n", result1);
 }

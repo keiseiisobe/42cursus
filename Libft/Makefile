@@ -22,7 +22,7 @@ SRCS	=	ft_atoi.c ft_isalpha.c ft_itoa.c ft_memmove.c ft_putnbr_fd.c \
 			ft_printf.c get_next_line_utils.c get_next_line.c
 OBJS	=	$(SRCS:.c=.o)
 CC	=	cc
-CFLAGS	=	-Wall -Wextra -Werror
+#CFLAGS	=	-Wall -Wextra -Werror
 
 $(NAME):$(OBJS)
 	ar rc $(NAME) $(OBJS)

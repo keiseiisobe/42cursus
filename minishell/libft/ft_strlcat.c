@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_double_quote.c                               :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/25 14:36:05 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/14 12:27:27 by kisobe           ###   ########.fr       */
+/*   Created: 2024/01/10 12:00:54 by kisobe            #+#    #+#             */
+/*   Updated: 2024/01/15 15:19:54 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../include/libft.h"
 
-bool	check_double_quote(char **argv)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	int		i;
-	int		j;
-	char	**strs;
-	int		flag;
+	size_t	i;
+	size_t	j;
+	size_t	d_len;
 
-	flag = 0;
-	i = 1;
-	while (argv[i])
+	if ((dst == NULL && dstsize == 0) || (dstsize <= ft_strlen(dst)))
+		return (dstsize + ft_strlen(src));
+	i = ft_strlen(dst);
+	d_len = ft_strlen(dst);
+	j = 0;
+	while (src[j] && i < dstsize - 1)
 	{
-		strs = ft_split(argv[i], ' ');
-		check_error(strs == NULL);
-		if (strs[1] != (void *)'\0')
-			flag = 1;
-		j = 0;
-		while (strs[j])
-			free(strs[j++]);
-		free(strs);
+		dst[i] = src[j];
 		i++;
+		j++;
 	}
-	if (flag == 1)
-		return (false);
-	return (true);
+	dst[i] = '\0';
+	return (d_len + ft_strlen(src));
 }

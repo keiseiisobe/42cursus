@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_double_quote.c                               :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/25 14:36:05 by kisobe            #+#    #+#             */
-/*   Updated: 2024/03/14 12:27:27 by kisobe           ###   ########.fr       */
+/*   Created: 2024/01/10 13:26:09 by kisobe            #+#    #+#             */
+/*   Updated: 2024/01/15 15:20:27 by kisobe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../include/libft.h"
 
-bool	check_double_quote(char **argv)
+char	*ft_strchr(const char *s, int c)
 {
 	int		i;
-	int		j;
-	char	**strs;
-	int		flag;
+	int		str_len;
+	char	*str_finded;
+	char	c_conv;
 
-	flag = 0;
-	i = 1;
-	while (argv[i])
+	c_conv = c;
+	i = 0;
+	str_len = ft_strlen(s);
+	while (i <= str_len)
 	{
-		strs = ft_split(argv[i], ' ');
-		check_error(strs == NULL);
-		if (strs[1] != (void *)'\0')
-			flag = 1;
-		j = 0;
-		while (strs[j])
-			free(strs[j++]);
-		free(strs);
+		if (s[i] == c_conv)
+		{
+			str_finded = (char *)&s[i];
+			return (str_finded);
+		}
 		i++;
 	}
-	if (flag == 1)
-		return (false);
-	return (true);
+	return (NULL);
 }

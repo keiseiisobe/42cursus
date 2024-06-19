@@ -1,47 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strchr_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 13:42:22 by kisobe            #+#    #+#             */
-/*   Updated: 2024/01/15 07:33:21 by kisobe           ###   ########.fr       */
+/*   Created: 2024/06/15 13:54:01 by ryutaro3205       #+#    #+#             */
+/*   Updated: 2024/06/15 13:54:02 by ryutaro3205      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include_bonus/libft_bonus.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
+	int		i;
 	int		str_len;
 	char	*str_finded;
 	char	c_conv;
 
 	c_conv = c;
+	i = 0;
 	str_len = ft_strlen(s);
-	while (0 <= str_len)
+	while (i <= str_len)
 	{
-		if (s[str_len] == c_conv)
+		if (s[i] == c_conv)
 		{
-			str_finded = (char *)&s[str_len];
+			str_finded = (char *)&s[i];
 			return (str_finded);
 		}
-		str_len--;
+		i++;
 	}
 	return (NULL);
 }
-/*
-int main()
-{
-	char str[20] = "abcddefg";
-	char *p1;
-	char *p2;
-
-	p1 = strrchr(str, 'a');
-	p2 = ft_strrchr(str, 'a');
-
-	printf("%s\n", p1);
-	printf("%s\n", p2);
-}
-*/

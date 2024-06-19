@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kisobe <kisobe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: ryutaro320515 <ryutaro320515@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 13:51:20 by kisobe            #+#    #+#             */
-/*   Updated: 2024/04/23 17:56:36 by kisobe           ###   ########.fr       */
+/*   Created: 2024/06/15 13:53:52 by ryutaro3205       #+#    #+#             */
+/*   Updated: 2024/06/15 13:53:53 by ryutaro3205      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include_bonus/libft_bonus.h"
 
 void	handle_c_to_p(va_list ap, const char *str, unsigned int *i_p,
 		int *num_of_bytes_p)
@@ -115,20 +115,4 @@ int	ft_printf(const char *str, ...)
 	}
 	va_end(ap);
 	return (num_of_bytes);
-}
-#include <stdio.h>
-
-int	main()
-{
-//	int result1;
-	int result2;
-//	char	c = 0xFF;
-//	char	*s = "world";
-//	int		d = -1;
-//	char	*s2 = NULL;
-
-	printf("hello");
-//	printf("%d\n", result2);
-//	result1 = ft_printf("hello");
-//	printf("%d\n", result1);
 }
