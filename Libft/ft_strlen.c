@@ -21,7 +21,7 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
-/*
+
 #include <stdio.h>
 
 int main()
@@ -29,7 +29,5 @@ int main()
 	int num;
 
 	num = ft_strlen("hello");
-	printf("%d", num);
-	printf("\n");   
+	printf("%d\n", num);
 }
-*/

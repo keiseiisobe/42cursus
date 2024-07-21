@@ -17,10 +17,10 @@ int	main(void)
 	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
 	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-	std::cout << std::endl;
-	a.print();
-	b.print();
-	c.print();
-	d.print();
+//	std::cout << std::endl;
+//	a.print();
+//	b.print();
+//	c.print();
+//	d.print();
 	return 0;
 }
