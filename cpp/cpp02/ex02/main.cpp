@@ -3,12 +3,15 @@
 
 int	main(void)
 {
-	Fixed		a;
-	Fixed const	b(10);
-	Fixed const	c(42.42f);
-	Fixed const	d(b);
+	Fixed	a;
+	Fixed const	b(Fixed(5.05f) * Fixed(2));
 
-	a = Fixed(1234.4321f);
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
 	std::cout << Fixed::min(a, b) << std::endl;
 	return 0;
 }
