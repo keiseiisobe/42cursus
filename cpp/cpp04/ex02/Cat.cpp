@@ -3,21 +3,23 @@
 Cat::Cat()
 {
 	type = "Cat";
+	b = new Brain();
 }
 
-Cat::Cat(const Cat& d)
-	: Animal(d)
+Cat::Cat(const Cat& c)
+	: Animal(c)
 {
 }
 
-Cat&	Cat::operator=(const Cat& d)
+Cat&	Cat::operator=(const Cat& c)
 {
-	type = d.type;
+	type = c.type;
 	return *this;
 }
 
 Cat::~Cat()
 {
+	delete b;
 }
 
 void	Cat::makeSound() const
