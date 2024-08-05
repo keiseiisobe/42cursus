@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 Bureaucrat::Bureaucrat()
 	: name(""), grade(0)
@@ -21,8 +22,8 @@ Bureaucrat::Bureaucrat(const Bureaucrat& b)
 
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& b)
 {
-	grade = b.getGrade();
-	std::cout << "Name is not changable. Only grade was copied." << std::endl;
+	(void)b;
+	std::cout << "Bureaucrat attribute is unchangable." << std::endl;
 	return *this;
 }
 
@@ -34,12 +35,12 @@ std::string	Bureaucrat::getName() const
 {
 	return name;
 }
-/*
+
 int	Bureaucrat::getGrade() const
 {
 	return grade;
 }
-*/
+
 void	Bureaucrat::increment_grade()
 {
 	if (grade - 1 < 1)
@@ -52,6 +53,20 @@ void	Bureaucrat::decrement_grade()
 	if (grade + 1 > 150)
 		throw GradeTooLowException();
 	grade++;
+}
+
+void	Bureaucrat::signForm(AForm& f)
+{
+	f.beSigned(*this);
+	if (f.getIsSigned())
+		std::cout << *this << std::endl << "signed" << std::endl << f << std::endl;
+	else
+		std::cout << *this << std::endl << "couldn't signed" << std::endl << f << ", because of low grade" << std::endl;
+}
+
+void	Bureaucrat::executeForm(AForm const & form)
+{
+	form.execute(*this);
 }
 
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& b)
