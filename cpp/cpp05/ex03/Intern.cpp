@@ -42,6 +42,6 @@ AForm	*Intern::makeForm(string form_name, string target)
 			return new PresidentialPardonForm(target);
 		default:
 			std::cerr << "Doesn't match any form." << std::endl;
-			return nullptr;
+			return nullptr; // should avoid nullptr ? (p.1039)
 	}
 }
