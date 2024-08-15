@@ -5,8 +5,10 @@
 
 class	Brain
 {
+	private:
+		static const int	size = 100;
 	public:
-		std::string	ideas[100];
+		std::string			ideas[size];
 		Brain();
 		Brain(const Brain&);
 		Brain&	operator=(const Brain&);
