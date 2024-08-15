@@ -57,16 +57,30 @@ void	Bureaucrat::decrement_grade()
 
 void	Bureaucrat::signForm(AForm& f)
 {
-	f.beSigned(*this);
-	if (f.getIsSigned())
-		std::cout << *this << std::endl << "signed" << std::endl << f << std::endl;
-	else
+	try
+	{
+		f.beSigned(*this);
+	}
+	catch (std::exception& e)
+	{
 		std::cout << *this << std::endl << "couldn't signed" << std::endl << f << ", because of low grade" << std::endl;
+		return;
+	}
+	std::cout << *this << std::endl << "signed" << std::endl << f << std::endl;
 }
 
 void	Bureaucrat::executeForm(AForm const & form)
 {
-	form.execute(*this);
+	try
+	{
+		form.execute(*this);
+	}
+	catch (std::exception& e)
+	{
+		std::cerr << getName() << " failed to execute " << form << ", because of low grade" << std::endl;
+		return;
+	}
+	std::cout << getName() << " executed " << form << std::endl;
 }
 
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& b)

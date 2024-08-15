@@ -20,7 +20,7 @@ AForm::AForm(std::string fName, int fGradeToSign, int fGradeToExecute)
 }
 
 AForm::AForm(const AForm& f)
-	: name(f.getName()), isSigned(f.getIsSigned()), gradeToSign(f.getGradeToSign()), gradeToExecute(f.getGradeToExecute())
+	: name(f.getName()), isSigned(false), gradeToSign(f.getGradeToSign()), gradeToExecute(f.getGradeToExecute())
 {
 }
 
@@ -59,6 +59,8 @@ void	AForm::beSigned(const Bureaucrat& b)
 {
 	if (b.getGrade() <= gradeToSign)
 		isSigned = true;
+	else
+		throw GradeTooLowException();
 }
 
 void	AForm::check_requirement(const Bureaucrat& executor) const
