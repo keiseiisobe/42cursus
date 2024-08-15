@@ -2,7 +2,6 @@
 
 Fixed::Fixed()
 {
-//	std::cout << "Default constructor called" << std::endl;
 	fixed_point_num = 0;
 }
 
@@ -10,7 +9,6 @@ Fixed::Fixed(const int i_num)
 {
 	int	num = i_num;
 
-//	std::cout << "Int constructor called" << std::endl;
 	for (int i = 0;i < num_of_bits;i++)
 		num *= 2;
 	setRawBits(num);
@@ -20,7 +18,6 @@ Fixed::Fixed(const float f_num)
 {
 	float	num = f_num;
 
-//	std::cout << "Float constructor called" << std::endl;
 	for (int i = 0;i < num_of_bits;i++)
 		num *= 2;
 	setRawBits(roundf(num));
@@ -28,22 +25,18 @@ Fixed::Fixed(const float f_num)
 
 Fixed::Fixed(const Fixed& f)
 {
-//	std::cout << "Copy constructor called" << std::endl;
 	setRawBits(f.getRawBits());
 }
 
 Fixed&	Fixed::operator=(const Fixed& f)
 {
-//	std::cout << "Copy assignment operator called" << std::endl;
 	setRawBits(f.getRawBits());
 	return *this;
 }
 
 Fixed::~Fixed()
 {
-//	std::cout << "Destructor called" << std::endl;
 }
-
 
 // overload operators
 bool	Fixed::operator<(const Fixed& f) const
@@ -198,7 +191,7 @@ Fixed&	Fixed::max(Fixed& a, Fixed& b)
 }
 
 // two functions below must guarantee not to modified parameters, because it has const parameters.
-// But, return values (a and b) can be modified only after leaving off these functions.
+// But, return values (a and b) can be modified after leaving off these functions.
 // Then we need to use const_cast not to cause compile error when return not-const values.
 Fixed&	Fixed::min(const Fixed& a, const Fixed& b)
 {
