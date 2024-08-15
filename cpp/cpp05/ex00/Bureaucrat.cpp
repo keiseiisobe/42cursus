@@ -34,12 +34,12 @@ std::string	Bureaucrat::getName() const
 {
 	return name;
 }
-/*
+
 int	Bureaucrat::getGrade() const
 {
 	return grade;
 }
-*/
+
 void	Bureaucrat::increment_grade()
 {
 	if (grade - 1 < 1)

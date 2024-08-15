@@ -20,18 +20,15 @@ Form::Form(std::string fName, int fGradeToSign, int fGradeToExecute)
 }
 
 Form::Form(const Form& f)
-	: name(f.getName()), isSigned(f.getIsSigned()), gradeToSign(f.getGradeToSign()), gradeToExecute(f.getGradeToExecute())
+	: name(f.getName()), isSigned(false), gradeToSign(f.getGradeToSign()), gradeToExecute(f.getGradeToExecute())
 {
+	std::cout << "Form has been successfully copied, but sign is false by default" << std::endl;
 }
 
 Form&	Form::operator=(const Form& f)
 {
 	(void)f;
-// all elements are const.
-//	name = f.getName();
-//	isSigned = f.getIsSigned();
-//	gradeToSign = f.getGradeToSign();
-//	gradeToExecute = f.getGradeToExecute();
+	std::cout << "All elements are constant. Copy assignment failed." << std::endl;
 	return *this;
 }
 
@@ -63,9 +60,11 @@ void	Form::beSigned(const Bureaucrat& b)
 {
 	if (b.getGrade() <= gradeToSign)
 		isSigned = true;
+	else
+		throw GradeTooLowException();
 }
 
 std::ostream&	operator<<(std::ostream& os, const Form& f)
 {
-	return os << f.getName() << ", signed " << std::boolalpha << f.getIsSigned() << ", grade_to_sign " << f.getGradeToSign() << ", grade_to_execute " << f.getGradeToExecute();
+	return os << "form (name: " << f.getName() << ", signed: " << std::boolalpha << f.getIsSigned() << ", grade_to_sign: " << f.getGradeToSign() << ", grade_to_execute: " << f.getGradeToExecute() << ")";
 }

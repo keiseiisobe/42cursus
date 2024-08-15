@@ -20,8 +20,9 @@ AForm::AForm(std::string fName, int fGradeToSign, int fGradeToExecute)
 }
 
 AForm::AForm(const AForm& f)
-	: name(f.getName()), isSigned(f.getIsSigned()), gradeToSign(f.getGradeToSign()), gradeToExecute(f.getGradeToExecute())
+	: name(f.getName()), isSigned(false), gradeToSign(f.getGradeToSign()), gradeToExecute(f.getGradeToExecute())
 {
+	std::cout << "Form has been successfully copied, but sign is false by default" << std::endl;
 }
 
 AForm&	AForm::operator=(const AForm& f)
@@ -59,6 +60,8 @@ void	AForm::beSigned(const Bureaucrat& b)
 {
 	if (b.getGrade() <= gradeToSign)
 		isSigned = true;
+	else
+		throw GradeTooLowException();
 }
 
 void	AForm::check_requirement(const Bureaucrat& executor) const
@@ -69,5 +72,5 @@ void	AForm::check_requirement(const Bureaucrat& executor) const
 
 std::ostream&	operator<<(std::ostream& os, const AForm& f)
 {
-	return os << f.getName() << ", signed " << std::boolalpha << f.getIsSigned() << ", grade_to_sign " << f.getGradeToSign() << ", grade_to_execute " << f.getGradeToExecute();
+	return os << "form (name: " << f.getName() << ", signed: " << std::boolalpha << f.getIsSigned() << ", grade_to_sign: " << f.getGradeToSign() << ", grade_to_execute: " << f.getGradeToExecute() << ")";
 }

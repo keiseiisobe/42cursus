@@ -7,7 +7,7 @@ int	main()
 {
 	try
 	{
-		Bureaucrat	b("", 5);
+		Bureaucrat	b("kisobe", 5);
 		std::cout << "------ShrubberyCreationForm------" << std::endl;
 		ShrubberyCreationForm	s(b.getName());
 		b.signForm(s);
@@ -26,6 +26,6 @@ int	main()
 	}
 	catch (std::exception& e)
 	{
-		std::cerr << "error" << std::endl;
+		std::cout << "error: out of range" << std::endl;
 	}
 }
