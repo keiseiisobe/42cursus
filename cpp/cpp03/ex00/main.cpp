@@ -1,31 +1,43 @@
 #include "ClapTrap.hpp"
 
+void	print_all_attribute(ClapTrap &c)
+{
+	std::cout << "-----ClapTrap \"" << c.get_name() << "\"-----" << std::endl;
+	std::cout << "hit points: " << c.get_hit_points() << std::endl;
+	std::cout << "energy points: " << c.get_energy_points() << std::endl;
+	std::cout << "attack damage: " << c.get_attack_damage() << std::endl;
+	std::cout << "-------------------------" << std::endl;
+}
+
 int	main()
 {
-	ClapTrap	p2("keisei");
-//	ClapTrap	p1;
-//	p1 = p2;
-	ClapTrap	p1(p2);
+	ClapTrap	p1("kisobe");
 
-	std::cout << "p1: name: " << p1.get_name() << std::endl;
-	std::cout << "p1: hit: " << p1.get_hit_points() << std::endl;
-	std::cout << "p1: energy: " << p1.get_energy_points() << std::endl;
-	std::cout << "p1: damage: " << p1.get_attack_damage() << std::endl;
-/*
-	std::cout << "p2: name: " << p2.get_name() << std::endl;
-	std::cout << "p2: hit: " << p2.get_hit_points() << std::endl;
-	std::cout << "p2: energy: " << p2.get_energy_points() << std::endl;
-	std::cout << "p2: damage: " << p2.get_attack_damage() << std::endl;
-*/
-	p1.attack("motoyama");
+	print_all_attribute(p1);
+	p1.attack("kmotoyama");
+	print_all_attribute(p1);
 	p1.takeDamage(2);
+	print_all_attribute(p1);
 	p1.beRepaired(3);
+	print_all_attribute(p1);
 
-	std::cout << "p1: name: " << p1.get_name() << std::endl;
-	std::cout << "p1: hit: " << p1.get_hit_points() << std::endl;
-	std::cout << "p1: energy: " << p1.get_energy_points() << std::endl;
-	std::cout << "p1: damage: " << p1.get_attack_damage() << std::endl;
-//	p2.attack("motoyama");
-//	p2.takeDamage(2);
-//	p2.beRepaired(3);
+	ClapTrap	p2;
+
+	print_all_attribute(p2);
+	p2.attack("mkaihori");
+	print_all_attribute(p2);
+	p2.takeDamage(2);
+	print_all_attribute(p2);
+	p2.beRepaired(3);
+	print_all_attribute(p2);
+
+	ClapTrap	p3(p1);
+
+	print_all_attribute(p3);
+	p3.attack("jyasukawa");
+	print_all_attribute(p3);
+	p3.takeDamage(11);
+	print_all_attribute(p3);
+	p3.beRepaired(3);
+	print_all_attribute(p3);
 }
