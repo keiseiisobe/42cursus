@@ -3,7 +3,7 @@
 
 #include <string>
 #include <iostream>
-#include <stdexcept>
+#include <iomanip>
 
 typedef struct	s_info
 {

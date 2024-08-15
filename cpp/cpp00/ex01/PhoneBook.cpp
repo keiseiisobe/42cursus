@@ -72,8 +72,6 @@ std::string	handle_char_wide(std::string str)
 		str = str.substr(0, 10);
 		str[9] = '.';
 	}
-	for (int i = 10 - static_cast<int>(str.length());i > 0;i--)
-		std::cout << " ";
 	return (str);
 }
 
@@ -82,6 +80,7 @@ void	print_each_contact(std::string str)
 	std::string	output;
 
 	output = handle_char_wide(str);
+	std::cout << std::setw(10) << std::setfill(' ');
 	std::cout << output << "|";
 }
 

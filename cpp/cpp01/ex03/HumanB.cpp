@@ -3,6 +3,7 @@
 HumanB::HumanB(std::string init_name)
 {
 	name = init_name;
+	w = nullptr;
 }
 
 HumanB::~HumanB()
@@ -16,5 +17,8 @@ void	HumanB::setWeapon(class Weapon& init_w)
 
 void	HumanB::attack(void)
 {
-	std::cout << name << " attacks with their " << w->getType() << std::endl;
+	if (!w)
+		std::cout << name << " has no weapon yet" << std::endl;
+	else
+		std::cout << name << " attacks with their " << w->getType() << std::endl;
 }

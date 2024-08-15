@@ -31,7 +31,7 @@ void	check_init_error(bool is_error, int flag)
 	exit(EXIT_FAILURE);
 }
 
-int	main(int argc, char *argv[])// ./Sed_is_for_losers <filename> <string1> <string2>
+int	main(int argc, char *argv[])
 {
 	check_init_error(argc != 4, ARG);
 	std::string	filename;

@@ -44,7 +44,6 @@ void	Harl::error(void)
 void	Harl::nothing(void)
 {
 	std::cout << "[ I don't care about anything. ]" << std::endl;
-	std::cout << std::endl;
 }
 
 void	Harl::complain(std::string level)
