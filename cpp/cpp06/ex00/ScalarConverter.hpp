@@ -4,7 +4,12 @@
 #include <ios>
 #include <iomanip>
 #include <cctype>
+
 #include <sstream>
+#include <limits>
+#include <climits>
+#include <cfloat>
+#include <cmath>
 
 using std::string;
 
@@ -18,3 +23,5 @@ class	ScalarConverter
 	public:
 		static void	convert(const string& str);
 };
+
+class	NotNumeric{};
