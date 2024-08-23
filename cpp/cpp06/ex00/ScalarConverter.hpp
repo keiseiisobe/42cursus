@@ -1,7 +1,10 @@
 #pragma once
 
 #include <iostream>
+#include <ios>
+#include <iomanip>
 #include <cctype>
+#include <sstream>
 
 using std::string;
 
@@ -13,5 +16,5 @@ class	ScalarConverter
 		ScalarConverter&	operator=(const ScalarConverter&);
 		~ScalarConverter();
 	public:
-		static void	convert(string str);
+		static void	convert(const string& str);
 };
