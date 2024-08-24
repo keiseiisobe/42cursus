@@ -1,0 +1,101 @@
+**********char test**********
+detected type: char
+char: 'a'
+int: 97
+float: 97.0f
+double: 97.0
+detected type: char
+char: 'b'
+int: 98
+float: 98.0f
+double: 98.0
+detected type: char
+char: 'c'
+int: 99
+float: 99.0f
+double: 99.0
+detected type: char
+char: 'x'
+int: 120
+float: 120.0f
+double: 120.0
+detected type: char
+char: 'y'
+int: 121
+float: 121.0f
+double: 121.0
+detected type: char
+char: 'z'
+int: 122
+float: 122.0f
+double: 122.0
+detected type: char
+char: 'A'
+int: 65
+float: 65.0f
+double: 65.0
+detected type: char
+char: 'B'
+int: 66
+float: 66.0f
+double: 66.0
+detected type: char
+char: 'C'
+int: 67
+float: 67.0f
+double: 67.0
+detected type: char
+char: 'X'
+int: 88
+float: 88.0f
+double: 88.0
+detected type: char
+char: 'Y'
+int: 89
+float: 89.0f
+double: 89.0
+detected type: char
+char: 'Z'
+int: 90
+float: 90.0f
+double: 90.0
+detected type: char
+char: '!'
+int: 33
+float: 33.0f
+double: 33.0
+detected type: char
+char: '"'
+int: 34
+float: 34.0f
+double: 34.0
+detected type: char
+char: '#'
+int: 35
+float: 35.0f
+double: 35.0
+detected type: char
+char: '$'
+int: 36
+float: 36.0f
+double: 36.0
+detected type: char
+char: '{'
+int: 123
+float: 123.0f
+double: 123.0
+detected type: char
+char: '|'
+int: 124
+float: 124.0f
+double: 124.0
+detected type: char
+char: '}'
+int: 125
+float: 125.0f
+double: 125.0
+detected type: char
+char: '~'
+int: 126
+float: 126.0f
+double: 126.0
