@@ -177,7 +177,7 @@ void	convert_float(const float& f)
 	else
 		std::cout << "char: impossible" << std::endl;
 	//int
-	if (f >= INT_MIN && f <= INT_MAX)
+	if (static_cast<long>(f) >= INT_MIN && static_cast<long>(f) <= INT_MAX)
 		std::cout << "int: " << static_cast<int>(f) << std::endl;
 	else
 		std::cout << "int: impossible" << std::endl;
@@ -206,7 +206,7 @@ void	convert_double(const double& d)
 	else
 		std::cout << "char: impossible" << std::endl;
 	//int
-	if (d >= INT_MIN && d <= INT_MAX)
+	if (static_cast<long>(d) >= INT_MIN && static_cast<long>(d) <= INT_MAX)
 		std::cout << "int: " << static_cast<int>(d) << std::endl;
 	else
 		std::cout << "int: impossible" << std::endl;
