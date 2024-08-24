@@ -31,13 +31,27 @@ size_t	count_occurance(const char c, const string& str)
 
 bool	detect_numeric(const string& str)
 {
-	if (!(((str[0] == '+' || str[0] == '-') && isdigit(str.at(1))) || isdigit(str[0])))
+	if (str.find_first_not_of("0123456789.+-ef") != string::npos)
 		return false;
-	if (str.find_first_not_of("0123456789.+-f") != string::npos)
+	//handle "e+"
+	if (count_occurance('e', str) > 1 || (str.find("e") != string::npos && (str.find("e+") == string::npos || str[0] == 'e' || !isdigit(str[str.find("e+") + 2]))))
 		return false;
-	if (count_occurance('+', str) > 1 || count_occurance('-', str) > 1 || count_occurance('.', str) > 1 || count_occurance('f', str) > 1)
+	if (str.find("e+") != string::npos && str.find(".") == string::npos)
 		return false;
-	if (str[str.size() - 1] == '+' || str[str.size() - 1] == '-' || str[str.size() - 1] == '.')
+	//handle '+'
+	if (count_occurance('+', str) > 2 || (count_occurance('+', str) == 1 && str.find("+") != 0 && str[str.find("+") - 1] != 'e') || (count_occurance('+', str) == 2 && (str[0] != '+' || str[str.rfind("+") - 1] != 'e')))
+		return false;
+	//handle '-'
+	if (count_occurance('-', str) > 1 || (count_occurance('-', str) == 1 && str[0] != '-'))
+		return false;
+	//handle '.'
+	if (count_occurance('.', str) > 1 || (count_occurance('.', str) == 1 && (str[0] == '.' || !isdigit(str[str.find(".") + 1]) || str[str.find_first_of(".e")] == 'e')))
+		return false;
+	//handle 'f'
+	if (count_occurance('f', str) > 1 || (count_occurance('f', str) == 1 && (str[str.size() - 1] != 'f')))
+		return false;
+	//handle 'e'
+	if (count_occurance('e', str) > 1 || (count_occurance('e', str) == 1 && (str[str.find("e") + 1] != '+')))
 		return false;
 	return true;
 }
