@@ -24,4 +24,4 @@ class	ScalarConverter
 		static void	convert(const string& str);
 };
 
-class	NotNumeric{};
+class	NotNumeric : public std::exception {};
