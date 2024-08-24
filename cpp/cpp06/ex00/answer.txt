@@ -99,3 +99,140 @@ char: '~'
 int: 126
 float: 126.0f
 double: 126.0
+**********int test**********
+detected type: int
+char: Non displayable
+int: 0
+float: 0.0f
+double: 0.0
+detected type: int
+char: Non displayable
+int: 1
+float: 1.0f
+double: 1.0
+detected type: int
+char: Non displayable
+int: -1
+float: -1.0f
+double: -1.0
+detected type: int
+char: 'd'
+int: 100
+float: 100.0f
+double: 100.0
+detected type: int
+char: Non displayable
+int: -100
+float: -100.0f
+double: -100.0
+detected type: int
+char: impossible
+int: 2147483647
+float: 2.14748e+09f
+double: 2.14748e+09
+detected type: int
+char: impossible
+int: -2147483648
+float: -2.14748e+09f
+double: -2.14748e+09
+detected type: int
+char: impossible
+int: impossible
+float: 2.14748e+09f
+double: 2.14748e+09
+detected type: int
+char: impossible
+int: impossible
+float: -2.14748e+09f
+double: -2.14748e+09
+detected type: int
+char: impossible
+int: impossible
+float: 9.22337e+18f
+double: 9.22337e+18
+detected type: int
+char: impossible
+int: impossible
+float: -9.22337e+18f
+double: -9.22337e+18
+detected type: int
+char: impossible
+int: impossible
+float: 9.22337e+18f
+double: 9.22337e+18
+detected type: int
+char: impossible
+int: impossible
+float: -9.22337e+18f
+double: -9.22337e+18
+**********float test**********
+detected type: float
+char: Non displayable
+int: 0
+float: 0.0f
+double: 0.0
+detected type: float
+char: Non displayable
+int: 0
+float: 0.1f
+double: 0.1
+detected type: float
+char: Non displayable
+int: 0
+float: -0.1f
+double: -0.1
+detected type: float
+char: '*'
+int: 42
+float: 42.4f
+double: 42.4
+detected type: float
+char: Non displayable
+int: -42
+float: -42.4f
+double: -42.4
+detected type: float
+char: impossible
+int: 2147483647
+float: 2.14748e+09f
+double: 2.14748e+09f
+detected type: float
+char: impossible
+int: -2147483648
+float: -2.14748e+09f
+double: -2.14748e+09
+detected type: float
+char: impossible
+int: impossible
+float: 3.40282e+38f
+double: 3.40282e+38
+detected type: float
+char: impossible
+int: impossible
+float: 1.17549e-38f
+double: 1.17549e-38
+detected type: float
+char: impossible
+int: impossible
+float: inff
+double: 1.79769e+308
+detected type: float
+char: impossible
+int: impossible
+float: -inff
+double: 2.22507e-308
+detected type: float
+char: impossible
+int: impossible
+float: nanf
+double: nan
+detected type: float
+char: impossible
+int: impossible
+float: inff
+double: inf
+detected type: float
+char: impossible
+int: impossible
+float: -inff
+double: -inf
