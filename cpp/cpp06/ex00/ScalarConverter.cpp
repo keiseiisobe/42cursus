@@ -206,11 +206,7 @@ void	convert_double(const double& d)
 	else
 		std::cout << "char: impossible" << std::endl;
 	//int
-<<<<<<< HEAD
-	if (static_cast<long>(f) >= INT_MIN && static_cast<long>(f) <= INT_MAX)
-=======
 	if (static_cast<long>(d) >= INT_MIN && static_cast<long>(d) <= INT_MAX)
->>>>>>> main
 		std::cout << "int: " << static_cast<int>(d) << std::endl;
 	else
 		std::cout << "int: impossible" << std::endl;
