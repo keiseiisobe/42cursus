@@ -195,7 +195,7 @@ detected type: float
 char: impossible
 int: 2147483647
 float: 2.14748e+09f
-double: 2.14748e+09f
+double: 2.14748e+09
 detected type: float
 char: impossible
 int: -2147483648
