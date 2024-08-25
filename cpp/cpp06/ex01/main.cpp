@@ -13,7 +13,7 @@ int	main()
 		Data	d(name[i], age[i], country[i]);
 		uintptr_t	ptr = Serializer::serialize(&d);
 		Data	*d_ = Serializer::deserialize(ptr);
-		if (d_->name != name[i] || d_->age != age[i] || d_->country != country[i])
+		if (d_ != &d || d_->name != name[i] || d_->age != age[i] || d_->country != country[i])
 		{
 			std::cout << "Serialization failed at index " << i << std::endl;
 			return 0;
