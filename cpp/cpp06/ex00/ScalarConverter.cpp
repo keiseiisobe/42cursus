@@ -230,7 +230,7 @@ void	convert_double(const double& d)
 void	ScalarConverter::convert(const string& str)
 {
 	string	type = detect_type(str);
-	std::cout << "detected type: " << type << std::endl;
+	std::cout << "detected type: " << type << " // remove this line" << std::endl;
 	string	types[] = {"char", "int", "float", "double"};
 	int	num_of_types = sizeof(types) / sizeof(types[0]);
 	int	i;
