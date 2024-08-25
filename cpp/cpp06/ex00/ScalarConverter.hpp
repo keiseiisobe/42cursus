@@ -1,11 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include <ios>
 #include <iomanip>
-#include <cctype>
-
-#include <sstream>
 #include <limits>
 #include <climits>
 #include <cfloat>
