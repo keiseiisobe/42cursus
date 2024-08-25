@@ -10,20 +10,20 @@ Base::~Base()
 Base*	generate(void)
 {
 	srand(time(NULL));
-	int	rand_num = rand() / RAND_MAX * 10;
+	int	rand_num = int((double(rand()) / RAND_MAX) * 10);
 	if (rand_num >= 0 && rand_num <= 3)
 	{
-		std::cout << "returned A type" << std::endl;
+		std::cout << "A type was Instanciated:" << std::endl;
 		return new A();
 	}
 	else if (rand_num >= 4 && rand_num <= 6)
 	{
-		std::cout << "returned B type" << std::endl;
+		std::cout << "B type was Instanciated:" << std::endl;
 		return new B();
 	}
 	else
 	{
-		std::cout << "returned C type" << std::endl;
+		std::cout << "C type was Instanciated:" << std::endl;
 		return new C();
 	}
 }
@@ -31,11 +31,11 @@ Base*	generate(void)
 void	identify(Base* p)
 {
 	if (dynamic_cast<A*>(p))
-		std::cout << "A type" << std::endl;
+		std::cout << "A type detected by pointer dynamic_cast" << std::endl;
 	else if (dynamic_cast<B*>(p))
-		std::cout << "B type" << std::endl;
+		std::cout << "B type detected by pointer dynamic_cast" << std::endl;
 	else if (dynamic_cast<C*>(p))
-		std::cout << "C type" << std::endl;
+		std::cout << "C type detected by pointer dynamic_cast" << std::endl;
 	else
 		std::cout << "Doesn't match any types" << std::endl;
 }
@@ -45,7 +45,7 @@ void	identify(Base& p)
 	try
 	{
 		dynamic_cast<A&>(p);
-		std::cout << "A type" << std::endl;
+		std::cout << "A type detected by reference dynamic_cast" << std::endl;
 		return;
 	}
 	catch (std::exception&)
@@ -54,7 +54,7 @@ void	identify(Base& p)
 	try
 	{
 		dynamic_cast<B&>(p);
-		std::cout << "B type" << std::endl;
+		std::cout << "B type detected by reference dynamic_cast" << std::endl;
 		return;
 	}
 	catch (std::exception&)
@@ -63,7 +63,7 @@ void	identify(Base& p)
 	try
 	{
 		dynamic_cast<C&>(p);
-		std::cout << "C type" << std::endl;
+		std::cout << "C type detected by reference dynamic_cast" << std::endl;
 		return;
 	}
 	catch (std::exception&)
