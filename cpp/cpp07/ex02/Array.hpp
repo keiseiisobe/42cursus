@@ -4,7 +4,7 @@ template<class T>
 class	Array
 {
 	private:
-		size_t	i;
+		unsigned int	size;
 		T		elem[size];
 	public:
 		Array();
@@ -12,4 +12,5 @@ class	Array
 		Array(const Array<T>&);
 		Array<T>&	operator=(const Array<T>&);
 		~Array();
+		unsigned int	size() const;
 };

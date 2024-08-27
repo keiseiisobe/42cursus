@@ -3,4 +3,6 @@
 
 int	main()
 {
+	// use template function
+	#include "Array.tpp"
 }
