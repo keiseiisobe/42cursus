@@ -1,8 +1,8 @@
 NAME = array
-SRCS = main.cpp
+SRCS = main.cpp Array.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -fsanitize=address -Wall -Wextra -Werror -std=c++98
 
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
