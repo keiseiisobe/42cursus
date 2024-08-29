@@ -1,35 +1,70 @@
 #include "Array.hpp"
 #include <iostream>
 
+using std::string;
+
 int	main()
 {
-	// use template function
-
 	try
 	{
 		{
-			std::cout << "***** size == 1 *****"<< std::endl;
-			Array<int>	a1;
-			std::cout << "a1.size: " << a1.size() << std::endl;
-			Array<int>	a2(a1);
-			std::cout << "a2.size: " << a2.size() << std::endl;
-			Array<int>	a3;
-			a3 = a1;
-			std::cout << "a3.size: " << a3.size() << std::endl;
+			std::cout << "***** Test1: default constructor *****" << std::endl << std::endl;
+			Array<int>	a;
+			// initialization test
+			if (a.size() != 1 || a[0] != 0)
+				throw std::string("Failed at Test1 because of bad initialization");
+			// subscript operator test
+			try
+			{
+				std::cout << a[1] << std::endl;
+				throw std::string("Failed at Test1 because of bad subscript operator");
+			}
+			catch (std::exception&)
+			{
+			}
+			try
+			{
+				a[1] = 1;
+				throw std::string("Failed at Test1 because of bad subscript operator");
+			}
+			catch (std::exception&)
+			{
+			}
+			std::cout << "passed Test1 !!!" << std::endl;
 		}
-
-		std::cout << std::endl << "***** size != 1 *****"<< std::endl;
-		Array<int>	a1(10);
-		std::cout << "a1.size: " << a1.size() << std::endl;
-		Array<int>	a2(a1);
-		std::cout << "a2.size: " << a2.size() << std::endl;
-		Array<int>	a3(15);
-		a3 = a1;
-		std::cout << "a3.size: " << a3.size() << std::endl;
+		{
+			std::cout << "***** Test2: constructor with parameter *****" << std::endl << std::endl;
+			unsigned int	n = 10;
+			Array<string>	a(n);
+			if (a.size() != n)
+				throw std::string("Failed at Test1 because of bad initialization");
+			for (int i = 0;i < n;i++)
+			{
+				if (a[i] != 0)
+					throw std::string("Failed at Test1 because of bad initialization");
+			}
+			try
+			{
+				std::cout << a[1] << std::endl;
+				throw std::string("Failed at Test1 because of bad subscript operator");
+			}
+			catch (std::exception&)
+			{
+			}
+			try
+			{
+				a[1] = 1;
+				throw std::string("Failed at Test1 because of bad subscript operator");
+			}
+			catch (std::exception&)
+			{
+			}
+			std::cout << "passed Test1 !!!" << std::endl;
+		}
 	}
-	catch (Array<int>::sizeMismatch& sm)
+	catch (std::string& msg)
 	{
-		sm.what();
+		std::cout << msg << std::endl;
 	}
 }
 
