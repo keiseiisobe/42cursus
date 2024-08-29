@@ -1,14 +1,14 @@
 NAME = BraiiiiiiinnnzzzZ
 SRCS = main.cpp Zombie.cpp randomChump.cpp newZombie.cpp
 OBJS = $(SRCS:.cpp=.o)
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 $(OBJS): $(SRCS)
-	$(CC) $(CFLAGS) -c $^
+	$(CXX) $(CXXFLAGS) -c $^
 
 all: $(NAME)
 

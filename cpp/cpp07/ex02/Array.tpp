@@ -1,13 +1,3 @@
-
-
-
-
-// you must change this filename to .tpp
-
-
-
-
-
 #include "Array.hpp"
 
 template<class T>

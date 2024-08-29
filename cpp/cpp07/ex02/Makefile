@@ -1,5 +1,5 @@
 NAME = array
-SRCS = main.cpp Array.cpp
+SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXX = c++
 CXXFLAGS = -fsanitize=address -Wall -Wextra -Werror -std=c++98
