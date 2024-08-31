@@ -2,7 +2,7 @@ NAME = array
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXX = c++
-CXXFLAGS = -fsanitize=address -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
