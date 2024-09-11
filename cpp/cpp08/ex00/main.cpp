@@ -3,6 +3,9 @@
 #include "easyfind.hpp"
 #include "color.hpp"
 
+int	num_test = 0;
+int	passed_test = 0;
+
 struct Incrementor
 {
 	int	current;
@@ -20,6 +23,7 @@ void	foundVectorTest()
 	for (int i = 0;i < 10;i++)
 	{
 		std::cout << "test1." << i << ": ";
+		num_test++;
 		std::vector<int>::iterator	result = easyfind(v1, i);
 		if (result - v1.begin() != i)
 		{
@@ -27,7 +31,10 @@ void	foundVectorTest()
 			std::cout << "    index: " << i << std::endl;
 		}
 		else
+		{
 			std::cout << color::green << "OK" << color::reset << std::endl;
+			passed_test++;
+		}
 	}
 }
 
@@ -41,6 +48,7 @@ void	foundListTest()
 	for (int i = 0;i < 10;i++)
 	{
 		std::cout << "test2." << i << ": ";
+		num_test++;
 		std::list<int>::iterator	result = easyfind(l1, i);
 		int	index = 0;
 		for (;result != l1.end();result++)
@@ -52,7 +60,10 @@ void	foundListTest()
 			std::cout << "    index: " << i << std::endl;
 		}
 		else
+		{
 			std::cout << color::green << "OK" << color::reset << std::endl;
+			passed_test++;
+		}
 	}
 }
 
@@ -65,10 +76,14 @@ void	notFoundVectorTest()
 	std::cout << "created vector: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}" << std::endl;
 	{
 		std::cout << "test3.1" << ": ";
+		num_test++;
 		int	value = -1;
 		std::vector<int>::iterator	result = easyfind(v1, value);
 		if (result == v1.end())
+		{
 			std::cout << color::green << "OK" << color::reset << std::endl;
+			passed_test++;
+		}
 		else
 		{
 			std::cout << color::red << "KO" << color::reset << std::endl;
@@ -77,10 +92,14 @@ void	notFoundVectorTest()
 	}
 	{
 		std::cout << "test3.2" << ": ";
+		num_test++;
 		int	value = 10;
 		std::vector<int>::iterator	result = easyfind(v1, value);
 		if (result == v1.end())
+		{
 			std::cout << color::green << "OK" << color::reset << std::endl;
+			passed_test++;
+		}
 		else
 		{
 			std::cout << color::red << "KO" << color::reset << std::endl;
@@ -98,10 +117,14 @@ void	notFoundListTest()
 	std::cout << "created list: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}" << std::endl;
 	{
 		std::cout << "test4.1" << ": ";
+		num_test++;
 		int	value = -1;
 		std::list<int>::iterator	result = easyfind(v1, value);
 		if (result == v1.end())
+		{
 			std::cout << color::green << "OK" << color::reset << std::endl;
+			passed_test++;
+		}
 		else
 		{
 			std::cout << color::red << "KO" << color::reset << std::endl;
@@ -110,10 +133,14 @@ void	notFoundListTest()
 	}
 	{
 		std::cout << "test4.2" << ": ";
+		num_test++;
 		int	value = 10;
 		std::list<int>::iterator	result = easyfind(v1, value);
 		if (result == v1.end())
+		{
 			std::cout << color::green << "OK" << color::reset << std::endl;
+			passed_test++;
+		}
 		else
 		{
 			std::cout << color::red << "KO" << color::reset << std::endl;
@@ -141,4 +168,10 @@ int	main()
 	foundTest();
 	std::cout << std::endl;
 	notFoundTest();
+	std::cout << std::endl;
+	std::cout << "********** test finished **********" << std::endl;
+	if (passed_test == num_test)
+		std::cout << color::green << "OK [ " << passed_test << " / " << num_test << " ]" << color::reset << std::endl;
+	else
+		std::cout << color::red << "KO [ " << passed_test << " / " << num_test << " ]" << color::reset << std::endl;
 }
