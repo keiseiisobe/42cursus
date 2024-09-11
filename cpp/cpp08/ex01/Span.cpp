@@ -1,5 +1,12 @@
 #include "Span.hpp"
 
+struct Incrementor
+{
+	int	current;
+	Incrementor(int start) : current(start) {}
+	int	operator()() {return current++;}
+};
+
 Span::Span()
 {
 }
@@ -29,6 +36,11 @@ Span::~Span()
 	delete value_;
 }
 
+int	Span::operator[](int n) const
+{
+	return value_->at(n);
+}
+
 unsigned int	Span::getSize() const
 {
 	return value_->size();
@@ -54,8 +66,8 @@ void	Span::addNumber(int n)
 	}
 	catch(std::string& err_msg)
 	{
-		std::cerr << Color::red << "Error: " << err_msg << std::endl;
-		std::cerr << "comes from " << __FILE__ << " : " << __FUNCTION__ << "() : line " << __LINE__ << Color::reset << std::endl;
+		std::cerr << color::red << "Error: " << err_msg << std::endl;
+		std::cerr << "comes from " << __FILE__ << " : " << __FUNCTION__ << "() : line " << __LINE__ << color::reset << std::endl;
 	}
 }
 
@@ -83,4 +95,9 @@ unsigned int	Span::shortestSpan() const
 		return shortest;
 	}
 	throw std::string("too few elements for shortestSpan()");
+}
+
+void	Span::generate(int value, unsigned int size)
+{
+	std::generate(value_->begin(), value_->begin() + size, addNumber(value));
 }

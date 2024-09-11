@@ -3,7 +3,7 @@
 
 #include <string>
 
-namespace Color
+namespace color
 {
 	const std::string	red = "\033[1;31m";
 	const std::string	green = "\033[1;32m";

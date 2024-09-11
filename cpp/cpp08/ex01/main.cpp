@@ -1,36 +1,46 @@
 #include "Span.hpp"
+#include "color.hpp"
+
+int	passed_test = 0;
+int	num_test = 0;
+
+void	copyConstructorTest()
+{
+	std::cout << "---------- Copy constructor Test ----------" << std::endl;
+	int	N = 10;
+	Span	s(N);
+	{
+		std::cout << "test1.1: ";
+		num_test++;
+		s.generate(10, 5); // {0 ... 9}
+		int	i = 0;
+		for (;i < N;i++)
+		{
+			std::cout << i << std::endl;
+			if (s[i] != i)
+				break;
+		}
+		if (i != N)
+		{
+			std::cerr << color::red << "KO" << std::endl;
+			std::cerr << "Error: copy constructor failed at value_[" << i << "]" << color::reset << std::endl;
+			std::cerr << "comes from " << __FILE__ << ":" << __FUNCTION__ << "():line" << __LINE__ << std::endl;
+		}
+		else
+		{
+			std::cout << color::green << "OK" << color::reset << std::endl;
+			passed_test++;
+		}
+	}
+}
+
+void	copyTest()
+{
+	std::cout << "********** Copy Test **********" << std::endl;
+	copyConstructorTest();
+}
 
 int	main()
 {
-	try
-	{
-		Span	s(10);
-
-		std::cout << "At start" << std::endl;
-		std::cout << "size: " << s.getSize() << std::endl;
-		std::cout << "capacity: " << s.getCapacity() << std::endl;
-
-		std::cout << "Looping ..." << std::endl << std::endl;
-		for (int i = 10;i > 0;i--)
-		{
-//			std::cout << std::endl;
-			s.addNumber(i);
-//			std::cout << "added " << i << std::endl;
-//			std::cout << "size: " << s.getSize() << std::endl;
-//			std::cout << "capacity: " << s.getCapacity() << std::endl;
-		}
-		std::cout << "before sort" << std::endl;
-		for (int i = 0;i < 10;i++)
-			std::cout << s[i] << std::endl;
-		s.sort();
-		std::cout << "after sort" << std::endl;
-		for (int i = 0;i < 10;i++)
-	 		std::cout << s[i] << std::endl;
-		std::cout << "longest span: " << s.longestSpan() << std::endl;
-		std::cout << "shortest span: " << s.shortestSpan() << std::endl;
-	}
-	catch(std::exception& e)
-	{
-		e.what();
-	}
+	copyTest();
 }

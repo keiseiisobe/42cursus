@@ -8,6 +8,8 @@
 
 #include "color.hpp"
 
+typedef int (*func)(void);
+
 class	Span
 {
 	private:
@@ -19,13 +21,15 @@ class	Span
 		Span(const Span&);
 		Span&	operator=(const Span&);
 		~Span();
-		int				operator[](int n) {return value_->at(n);} // useful for Debug
-		unsigned int	getSize() const; // useful for Debug
-		unsigned int	getCapacity() const; // useful for Debug
-		void			sort(); // useful for Debug
 		void			addNumber(int n);
 		unsigned int	longestSpan() const;
 		unsigned int	shortestSpan() const;
+		void			generate(int value, unsigned int size);
+
+		int				operator[](int n) const; // useful for Debug
+		unsigned int	getSize() const; // useful for Debug
+		unsigned int	getCapacity() const; // useful for Debug
+		void			sort(); // useful for Debug
 };
 
 #endif
