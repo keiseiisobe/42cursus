@@ -8,8 +8,6 @@
 
 #include "color.hpp"
 
-typedef int (*func)(void);
-
 class	Span
 {
 	private:
@@ -27,7 +25,7 @@ class	Span
 		void			fillN(unsigned int n, int value);
 		void			generateN(unsigned int n, int start);
 
-		// useful for debugging
+		// useful for debug
 		int				operator[](int n) const;
 		unsigned int	getN() const;
 		unsigned int	getSize() const;

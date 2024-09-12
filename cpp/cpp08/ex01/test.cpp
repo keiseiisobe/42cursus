@@ -327,14 +327,21 @@ void	largeNumberTest()
 
 int	main()
 {
-	copyConstructorsTest();
-	addNumberTest();
-	shortestSpanTest();
-	longestSpanTest();
-	largeNumberTest();
-	std::cout << std::endl << std::endl << "[ Test Finished ]" << std::endl;
-	if (num_test == passed_test)
-		std::cout << color::green << "OK [ " << passed_test << " / " << num_test << " ]" << color::reset << std::endl;
-	else
-		std::cout << color::red << "KO [ " << passed_test << " / " << num_test << " ]" << color::reset << std::endl;
+	try
+	{
+		copyConstructorsTest();
+		addNumberTest();
+		shortestSpanTest();
+		longestSpanTest();
+		largeNumberTest();
+		std::cout << std::endl << std::endl << "[ Test Finished ]" << std::endl;
+		if (num_test == passed_test)
+			std::cout << color::green << "OK [ " << passed_test << " / " << num_test << " ]" << color::reset << std::endl;
+		else
+			std::cout << color::red << "KO [ " << passed_test << " / " << num_test << " ]" << color::reset << std::endl;
+	}
+	catch(std::exception& e)
+	{
+		e.what();
+	}
 }
