@@ -2,7 +2,6 @@
 #define SPAN_HPP
 
 #include <string>
-#include <iostream>
 #include <vector>
 #include <algorithm>
 
@@ -20,8 +19,8 @@ class	Span
 		Span&	operator=(const Span&);
 		~Span();
 		void			addNumber(int n);
-		unsigned int	longestSpan() const;
 		unsigned int	shortestSpan() const;
+		unsigned int	longestSpan() const;
 		void			fillN(unsigned int n, int value);
 		void			generateN(unsigned int n, int start);
 

@@ -14,7 +14,7 @@ void	copyConstructorTest()
 	MutantStack<float>	ms;
 	for (int i = 0;i < 20;i++)
 		ms.push(i);
-	MutantStack<float>	copy(ms);
+	MutantStack<float>	copy(ms); // copy constructor
 	if (ms.size() != copy.size())
 	{
 		std::cerr << color::red << "KO" << color::reset << std::endl;
@@ -56,7 +56,7 @@ void	copyAssignmentTest()
 	for (int i = 0;i < 50;i++)
 		ms.push(i);
 	MutantStack<double>	copy;
-	copy = ms;
+	copy = ms; // copy assignment
 	if (ms.size() != copy.size())
 	{
 		std::cerr << color::red << "KO" << color::reset << std::endl;

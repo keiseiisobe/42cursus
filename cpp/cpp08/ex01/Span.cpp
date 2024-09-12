@@ -1,12 +1,5 @@
 #include "Span.hpp"
 
-struct Incrementor
-{
-	int	current;
-	Incrementor(int start) : current(start) {}
-	int	operator()() {return current++;}
-};
-
 Span::Span()
 {
 }
@@ -63,17 +56,6 @@ void	Span::addNumber(int n)
 	value_->push_back(n);
 }
 
-unsigned int	Span::longestSpan() const
-{
-	if (value_->size() > 1)
-	{
-		std::vector<int>	tmp = *value_;
-		std::sort(tmp.begin(), tmp.end());
-		return *(tmp.end() - 1) - *tmp.begin();
-	}
-	throw std::string("too few elements for longestSpan()");
-}
-
 unsigned int	Span::shortestSpan() const
 {
 	if (value_->size() > 1)
@@ -93,10 +75,28 @@ unsigned int	Span::shortestSpan() const
 	throw std::string("too few elements for shortestSpan()");
 }
 
+unsigned int	Span::longestSpan() const
+{
+	if (value_->size() > 1)
+	{
+		std::vector<int>	tmp = *value_;
+		std::sort(tmp.begin(), tmp.end());
+		return *(tmp.end() - 1) - *tmp.begin();
+	}
+	throw std::string("too few elements for longestSpan()");
+}
+
 void	Span::fillN(unsigned int n, int value)
 {
 	std::fill_n(back_inserter(*value_), n, value);
 }
+
+struct Incrementor
+{
+	int	current;
+	Incrementor(int start) : current(start) {}
+	int	operator()() {return current++;}
+};
 
 void	Span::generateN(unsigned int n, int start)
 {

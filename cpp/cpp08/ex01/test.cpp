@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Span.hpp"
 #include "color.hpp"
 
