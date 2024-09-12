@@ -9,34 +9,34 @@ class	MutantStack : public std::stack<T, C>
 {
 	public:
 		typedef typename C::iterator iterator;
+		typedef typename C::reverse_iterator reverse_iterator;
 
-		explicit MutantStack();
-		explicit MutantStack(const MutantStack&);
+		MutantStack();
+		MutantStack(const MutantStack&);
 		MutantStack&	operator=(const MutantStack&);
 		~MutantStack();
 		iterator	begin();
 		iterator	end();
-		const iterator	cbegin() const;
-		const iterator	cend() const;
-		iterator	rbegin();
-		iterator	rend();
-		const iterator	crbegin() const;
-		const iterator	crend() const;
+		reverse_iterator	rbegin();
+		reverse_iterator	rend();
 };
 
 template<class T, class C>
 MutantStack<T, C>::MutantStack()
+: std::stack<T, C>()
 {
 }
 
 template<class T, class C>
 MutantStack<T, C>::MutantStack(const MutantStack& other)
+: std::stack<T, C>(other)
 {
 }
 
 template<class T, class C>
 MutantStack<T, C>&	MutantStack<T, C>::operator=(const MutantStack<T, C>& other)
 {
+	std::stack<T, C>::operator=(other);
 	return *this;
 }
 
@@ -58,39 +58,15 @@ typename MutantStack<T, C>::iterator	MutantStack<T, C>::end()
 }
 
 template<class T, class C>
-const typename MutantStack<T, C>::iterator	MutantStack<T, C>::cbegin() const
-{
-	return std::stack<T, C>::c.cbegin();
-}
-
-template<class T, class C>
-const typename MutantStack<T, C>::iterator	MutantStack<T, C>::cend() const
-{
-	return std::stack<T, C>::c.cend();
-}
-
-template<class T, class C>
-typename MutantStack<T, C>::iterator	MutantStack<T, C>::rbegin()
+typename MutantStack<T, C>::reverse_iterator	MutantStack<T, C>::rbegin()
 {
 	return std::stack<T, C>::c.rbegin();
 }
 
 template<class T, class C>
-typename MutantStack<T, C>::iterator	MutantStack<T, C>::rend()
+typename MutantStack<T, C>::reverse_iterator	MutantStack<T, C>::rend()
 {
 	return std::stack<T, C>::c.rend();
-}
-
-template<class T, class C>
-const typename MutantStack<T, C>::iterator	MutantStack<T, C>::crbegin() const
-{
-	return std::stack<T, C>::c.crbegin();
-}
-
-template<class T, class C>
-const typename MutantStack<T, C>::iterator	MutantStack<T, C>::crend() const
-{
-	return std::stack<T, C>::c.crend();
 }
 
 #endif
