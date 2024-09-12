@@ -24,12 +24,14 @@ class	Span
 		void			addNumber(int n);
 		unsigned int	longestSpan() const;
 		unsigned int	shortestSpan() const;
-		void			generate(int value, unsigned int size);
+		void			fillN(unsigned int n, int value);
+		void			generateN(unsigned int n, int start);
 
-		int				operator[](int n) const; // useful for Debug
-		unsigned int	getSize() const; // useful for Debug
-		unsigned int	getCapacity() const; // useful for Debug
-		void			sort(); // useful for Debug
+		// useful for debugging
+		int				operator[](int n) const;
+		unsigned int	getN() const;
+		unsigned int	getSize() const;
+		unsigned int	getCapacity() const;
 };
 
 #endif
