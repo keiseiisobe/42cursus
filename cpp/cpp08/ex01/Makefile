@@ -14,14 +14,16 @@ clean:
 	rm -rf $(OBJS) test.o
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf $(NAME) $(TEST_NAME)
 
 re: fclean all
 
-TEST = test.cpp
+TEST_NAME = ex01Test
 TEST_OBJS = $(SRCS:.cpp=.o) test.o
 
-test: $(TEST_OBJS)
-	$(CXX) $(CXXFLAGS) $(TEST_OBJS) -o $(NAME)
+$(TEST_NAME): $(TEST_OBJS)
+	$(CXX) $(CXXFLAGS) $(TEST_OBJS) -o $(TEST_NAME)
 
-.PHONY: all clean fclean re
+test: $(TEST_NAME)
+
+.PHONY: all clean fclean re test

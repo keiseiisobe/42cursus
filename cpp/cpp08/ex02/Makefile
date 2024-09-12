@@ -12,13 +12,16 @@ clean:
 	rm -rf $(OBJS) $(TEST_OBJS)
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf $(NAME) $(TEST_NAME)
 
 re: fclean all
 
+TEST_NAME = mutantStackTest
 TEST_OBJS = test.o
 
-test: $(TEST_OBJS)
-	$(CXX) $(CXXFLAGS) $(TEST_OBJS) -o $(NAME)
+$(TEST_NAME): $(TEST_OBJS)
+	$(CXX) $(CXXFLAGS) $(TEST_OBJS) -o $(TEST_NAME)
 
-.PHONY: all clean fclean re
+test: $(TEST_NAME)
+
+.PHONY: all clean fclean re test
